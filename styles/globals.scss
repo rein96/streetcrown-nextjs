@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dark-ds: #262b31;
+  --red-ds: #ed5858;
+}
+
+body {
+  background-color: var(--dark-ds);
+}
