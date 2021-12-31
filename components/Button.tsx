@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 
 interface ButtonProps {
   href?: string;
@@ -7,7 +7,7 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ children, href, ...params }) => {
   const className =
-    "inline-block px-5 py-3 font-medium leading-snug border border-transparent text-base rounded-md text-white bg-red hover:bg-midnight focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+    'inline-block px-5 py-3 font-medium leading-snug border border-transparent text-base rounded-md text-white bg-red hover:bg-midnight focus:outline-none focus:shadow-outline transition duration-150 ease-in-out';
 
   if (href) {
     return (
@@ -19,14 +19,14 @@ const Button: React.FC<ButtonProps> = ({ children, href, ...params }) => {
       >
         {children}
       </a>
-    )
+    );
   } else {
     return (
       <button className={className} {...params}>
         {children}
       </button>
-    )
+    );
   }
-}
+};
 
-export default Button
+export default Button;
