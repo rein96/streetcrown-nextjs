@@ -3,7 +3,7 @@ import Button from './Button';
 
 const Hero: React.FC = () => (
   <>
-    <section className="hero-container relative flex-center-center">
+    <section className="hero-container flex items-center justify-center">
       <section className="hero-content absolute text-center font-semibold text-white">
         <h1 className="streetcrown-title-h1 text-xl lg:text-2xl tracking-wider">
           <span className="text-red">StreetCrown</span> | Professional Auto
