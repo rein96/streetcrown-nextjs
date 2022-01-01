@@ -13,7 +13,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
 }) => {
   return (
     <h3
-      className={`relative text-center text-white text-2xl md:text-3xl font-medium letter-spacing-1px ${className}`}
+      className={`relative text-center text-white text-2xl md:text-3xl font-medium letter-spacing-1px tracking-wider ${className}`}
     >
       {firstWords} <span className='text-red'>{secondWords}</span>
     </h3>
