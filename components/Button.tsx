@@ -18,8 +18,8 @@ const Button: React.FC<ButtonProps> = ({
     return (
       <a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target='_blank'
+        rel='noopener noreferrer'
         className={classes}
       >
         {children}

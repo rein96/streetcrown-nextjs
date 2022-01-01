@@ -3,35 +3,35 @@ import Button from './Button';
 
 const Hero: React.FC = () => (
   <>
-    <section className="hero-container flex items-center justify-center">
-      <section className="hero-content absolute text-center font-semibold text-white">
-        <h1 className="streetcrown-title-h1 text-xl lg:text-2xl tracking-wider">
-          <span className="text-red">StreetCrown</span> | Professional Auto
+    <section className='hero-container flex items-center justify-center'>
+      <section className='hero-content absolute text-center font-semibold text-white'>
+        <h1 className='streetcrown-title-h1 text-xl lg:text-2xl tracking-wider'>
+          <span className='text-red'>StreetCrown</span> | Professional Auto
           Detailer
         </h1>
-        <h2 className="streetcrown-slogan-large text-5xl lg:text-6xl tracking-wider">
-          <span className="text-red">Shiny</span> <span>inside</span>{' '}
-          <span className="text-red">Shiny</span> <span>outside</span>
+        <h2 className='streetcrown-slogan-large text-5xl lg:text-6xl tracking-wider'>
+          <span className='text-red'>Shiny</span> <span>inside</span>{' '}
+          <span className='text-red'>Shiny</span> <span>outside</span>
         </h2>
-        <h2 className="streetcrown-slogan-mobile tracking-wider">
-          <div className="text-left">
-            <span className="text-red">Shiny</span> <span>inside</span>
+        <h2 className='streetcrown-slogan-mobile tracking-wider'>
+          <div className='text-left'>
+            <span className='text-red'>Shiny</span> <span>inside</span>
           </div>
-          <div className="text-right">
-            <span className="text-red">Shiny</span> <span>outside</span>
+          <div className='text-right'>
+            <span className='text-red'>Shiny</span> <span>outside</span>
           </div>
         </h2>
-        <Button className="mt-4">Book Now</Button>
+        <Button className='mt-4'>Book Now</Button>
       </section>
       <img
-        alt="interior car background"
-        className="hero-image hero-portrait"
-        src="/assets/hero-portrait.jpg"
+        alt='interior car background'
+        className='hero-image hero-portrait'
+        src='/assets/hero-portrait.jpg'
       />
       <img
-        alt="interior car background"
-        className="hero-image hero-landscape"
-        src="/assets/hero-landscape.jpg"
+        alt='interior car background'
+        className='hero-image hero-landscape'
+        src='/assets/hero-landscape.jpg'
       />
       {/* TODO: Use next/image */}
       {/* <Image

@@ -11,35 +11,35 @@ function BeforeAfter() {
   return (
     <>
       <div
-        className="before-after-container container"
+        className='before-after-container container'
         style={{ maxWidth: '700px' }}
       >
         <SectionTitle
           firstWords={'Our'}
           secondWords={'Before and After Portfolio'}
-          className="mb-20 mt-20"
+          className='mb-20 mt-20'
         />
         <div
-          id="slider"
-          className="beer-slider shadow-lg br-20"
-          data-beer-label="after"
+          id='slider'
+          className='beer-slider shadow-lg br-20'
+          data-beer-label='after'
         >
-          <img src={'/assets/close-after.jpg'} alt="after" />
-          <div className="beer-reveal" data-beer-label="before">
-            <img src={'/assets/close-before.jpg'} alt="before" />
+          <img src={'/assets/close-after.jpg'} alt='after' />
+          <div className='beer-reveal' data-beer-label='before'>
+            <img src={'/assets/close-before.jpg'} alt='before' />
           </div>
         </div>
 
-        <div className="mb-20"></div>
+        <div className='mb-20'></div>
 
         <div
-          id="slider-2"
-          className="beer-slider shadow-lg br-20"
-          data-beer-label="after"
+          id='slider-2'
+          className='beer-slider shadow-lg br-20'
+          data-beer-label='after'
         >
-          <img src={'/assets/logo-after.jpg'} alt="after" />
-          <div className="beer-reveal" data-beer-label="before">
-            <img src={'/assets/logo-before.jpg'} alt="before" />
+          <img src={'/assets/logo-after.jpg'} alt='after' />
+          <div className='beer-reveal' data-beer-label='before'>
+            <img src={'/assets/logo-before.jpg'} alt='before' />
           </div>
         </div>
       </div>

@@ -23,14 +23,14 @@ const Header = () => {
   // `)
 
   return (
-    <header className="header p-3 w-full shadow-md">
-      <nav className="flex justify-between items-center">
+    <header className='header p-3 w-full shadow-md'>
+      <nav className='flex justify-between items-center'>
         {/* Logo */}
         <Link href={'/'}>
           <Image
-            alt="Logo"
-            className="w-24 md:w-32"
-            src="/assets/streetcrown-logo-transparent.svg"
+            alt='Logo'
+            className='w-24 md:w-32'
+            src='/assets/streetcrown-logo-transparent.svg'
             width={100}
             height={50}
           />
@@ -42,9 +42,9 @@ const Header = () => {
 
         {/* Hamburger menu */}
         <button
-          className="sm:hidden text-white"
+          className='sm:hidden text-white'
           // onClick={() => setIsMenuOpen(true)}
-          aria-label="Open Menu"
+          aria-label='Open Menu'
         >
           <Image src={'/assets/hamburger.svg'} width={30} height={30} />
           {/* <FaBars className="h-6 w-auto text-white fill-current -mt-1" /> */}
@@ -69,14 +69,14 @@ const Header = () => {
         setIsOpen={setIsMenuOpen}
         links={site.data.menu}
       /> */}
-        <div className="hidden sm:block text-white">
-          <a className="ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer">
+        <div className='hidden sm:block text-white'>
+          <a className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'>
             Services
           </a>
-          <a className="ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer">
+          <a className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'>
             Before & After
           </a>
-          <a className="ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer">
+          <a className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'>
             Workshops
           </a>
         </div>
