@@ -15,6 +15,12 @@ body {
   color: var(--red-ds);
 }
 
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 ////////// Beer Slider
 /* html {
 	font-family: Montserrat, sans-serif;

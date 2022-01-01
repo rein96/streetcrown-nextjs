@@ -10,55 +10,44 @@ function BeforeAfter() {
 
   return (
     <>
-      <div
-        className='before-after-container container'
-        style={{ maxWidth: '700px' }}
-      >
-        <SectionTitle
-          firstWords={'Our'}
-          secondWords={'Before and After Portfolio'}
-          className='mb-20 mt-20'
-        />
-        <div
-          id='slider'
-          className='beer-slider shadow-lg br-20'
-          data-beer-label='after'
-        >
-          <img src={'/assets/close-after.jpg'} alt='after' />
-          <div className='beer-reveal' data-beer-label='before'>
-            <img src={'/assets/close-before.jpg'} alt='before' />
-          </div>
-        </div>
+      <div className='flex-center-center'>
+        <div className='container mb-20'>
+          <SectionTitle
+            firstWords={'Our'}
+            secondWords={'Before and After Portfolio'}
+            className='mb-20 mt-20 pt-8 sm:border-t border-grey'
+          />
+          <div className='before-after-container' style={{ maxWidth: '700px' }}>
+            <div
+              id='slider'
+              className='beer-slider shadow-lg br-20'
+              data-beer-label='after'
+            >
+              <img src={'/assets/close-after.jpg'} alt='after' />
+              <div className='beer-reveal' data-beer-label='before'>
+                <img src={'/assets/close-before.jpg'} alt='before' />
+              </div>
+            </div>
 
-        <div className='mb-20'></div>
+            <div className='mb-20'></div>
 
-        <div
-          id='slider-2'
-          className='beer-slider shadow-lg br-20'
-          data-beer-label='after'
-        >
-          <img src={'/assets/logo-after.jpg'} alt='after' />
-          <div className='beer-reveal' data-beer-label='before'>
-            <img src={'/assets/logo-before.jpg'} alt='before' />
+            <div
+              id='slider-2'
+              className='beer-slider shadow-lg br-20'
+              data-beer-label='after'
+            >
+              <img src={'/assets/logo-after.jpg'} alt='after' />
+              <div className='beer-reveal' data-beer-label='before'>
+                <img src={'/assets/logo-before.jpg'} alt='before' />
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* CSS */}
       <style jsx>{`
-        /* html {
-	font-family: Montserrat, sans-serif;
-	line-height: 1.5;
-	color: #fff;
-	font-weight: 300;
-}
-
-header {
-    text-align: center;
-    overflow: hidden;
-    position: relative;
-    padding: 30px 0 10px 0;
-} */
-
-        .container {
+        .before-after-container {
           max-width: 960px;
           margin: 0 auto;
           padding: 0 0.75rem;
@@ -69,15 +58,6 @@ header {
           letter-spacing: 2px;
           text-transform: uppercase;
         }
-
-        /* h1 {			
-	font-size: 4rem;
-	margin: 0;	
-}
-h2 {			
-	margin: 0 0 1.5rem;
-	font-weight: 300;
-} */
 
         .beer-slider[data-beer-label]:after,
         .beer-reveal[data-beer-label]:after {
