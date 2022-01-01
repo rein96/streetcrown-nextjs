@@ -4,10 +4,8 @@ import Image from 'next/image';
 function Footer() {
   return (
     <>
-      <footer
-        className={'flex items-center justify-center text-white border-t'}
-      >
-        <div className='flex items-center flex-col sm:flex-row'>
+      <footer className={'flex-center-center text-white'}>
+        <div className='flex-center-center flex-col sm:flex-row container border-t'>
           <div className='footer-logo-container mx-4 py-6'>
             <Image
               src='/assets/streetcrown-round-logo.svg'
