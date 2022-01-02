@@ -21,6 +21,11 @@ body {
   align-items: center;
 }
 
+.brightness-30 {
+  --tw-brightness: brightness(0.3);
+  filter: var(--tw-filter);
+}
+
 ////////// Beer Slider
 /* html {
 	font-family: Montserrat, sans-serif;

@@ -33,7 +33,6 @@ export const getStaticProps = async () => {
 };
 
 const HomePage: React.FC<HomePageProps> = ({ detailingServices }) => {
-  console.log('detailingServices [PAGE]', detailingServices);
   return (
     <Layout>
       <Hero />
