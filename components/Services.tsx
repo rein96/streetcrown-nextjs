@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
+import Button from './Button';
+import SectionTitle from './SectionTitle';
 
 interface ServicesProps {
   detailingServices: any[];
@@ -7,28 +9,38 @@ interface ServicesProps {
 
 const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
   return (
-    <div className='flex-center-center'>
-      <div className='cards-container w-full flex items-center justify-center flex-col md:flex-row text-center container'>
-        {detailingServices.map((service) => {
-          console.log('single service', service);
-          const { sys, fields } = service;
-          return (
-            <div className='card-container m-4 relative' key={sys.id}>
-              <Image
-                className='brightness-30 rounded-sm'
-                src={'https:' + fields.thumbnail.fields.file.url}
-                width={fields.thumbnail.fields.file.details.image.width}
-                height={fields.thumbnail.fields.file.details.image.height}
-              />
-              <div className='card-content'>
-                <h4 className='text-xl border-b pb-1 mb-1'>{fields.name}</h4>
-                <p className='text-xs text-grey opacity-80'>
-                  {fields.subtitle.toUpperCase()}
-                </p>
-              </div>
-            </div>
-          );
-        })}
+    <>
+      <div className='flex-center-center -mb-16'>
+        <div className='container relative -top-28'>
+          <SectionTitle firstWords='Our' secondWords={'Workshops'} />
+          <div className='cards-container w-full flex items-center justify-center flex-col md:flex-row text-center'>
+            {detailingServices.map((service) => {
+              console.log('single service', service);
+              const { sys, fields } = service;
+              return (
+                <div className='card-container m-4 relative' key={sys.id}>
+                  <Image
+                    className='brightness-30 rounded-sm'
+                    src={'https:' + fields.thumbnail.fields.file.url}
+                    width={fields.thumbnail.fields.file.details.image.width}
+                    height={fields.thumbnail.fields.file.details.image.height}
+                  />
+                  <div className='card-content'>
+                    <h4 className='text-xl border-b pb-1 mb-1'>
+                      {fields.name}
+                    </h4>
+                    <p className='text-xs text-grey opacity-80'>
+                      {fields.subtitle.toUpperCase()}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className='flex-center-center'>
+            <Button className='py-2'>Load More Services</Button>
+          </div>
+        </div>
       </div>
 
       {/* CSS */}
@@ -45,7 +57,7 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
           width: 96%;
         }
       `}</style>
-    </div>
+    </>
   );
 };
 
