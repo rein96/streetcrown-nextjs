@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import Button from './Button';
 import SectionTitle from './SectionTitle';
@@ -18,22 +19,24 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
               console.log('single service', service);
               const { sys, fields } = service;
               return (
-                <div className='card-container m-4 relative' key={sys.id}>
-                  <Image
-                    className='brightness-30 rounded-sm'
-                    src={'https:' + fields.thumbnail.fields.file.url}
-                    width={fields.thumbnail.fields.file.details.image.width}
-                    height={fields.thumbnail.fields.file.details.image.height}
-                  />
-                  <div className='card-content'>
-                    <h4 className='text-xl border-b pb-1 mb-1'>
-                      {fields.name}
-                    </h4>
-                    <p className='text-xs text-grey opacity-80'>
-                      {fields.subtitle.toUpperCase()}
-                    </p>
+                <Link href={`/detailing/${fields.slug}`} key={sys.id}>
+                  <div className='card-container m-4 relative cursor-pointer'>
+                    <Image
+                      className='brightness-30 rounded-sm'
+                      src={'https:' + fields.thumbnail.fields.file.url}
+                      width={fields.thumbnail.fields.file.details.image.width}
+                      height={fields.thumbnail.fields.file.details.image.height}
+                    />
+                    <div className='card-content'>
+                      <h4 className='text-xl border-b pb-1 mb-1'>
+                        {fields.name}
+                      </h4>
+                      <p className='text-xs text-grey opacity-80'>
+                        {fields.subtitle.toUpperCase()}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
