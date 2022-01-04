@@ -22,8 +22,7 @@ body {
 }
 
 .brightness-30 {
-  --tw-brightness: brightness(0.3);
-  filter: var(--tw-filter);
+  filter: brightness(0.3);
 }
 
 ////////// Beer Slider
