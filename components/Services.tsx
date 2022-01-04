@@ -13,7 +13,7 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
     <>
       <div className='flex-center-center -mb-16'>
         <div className='container relative -top-28'>
-          <SectionTitle firstWords='Our' secondWords={'Workshops'} />
+          <SectionTitle firstWords='Our' secondWords={'Services'} />
           <div className='cards-container w-full flex items-center justify-center flex-col md:flex-row text-center'>
             {detailingServices.map((service) => {
               console.log('single service', service);
