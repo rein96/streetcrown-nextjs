@@ -1,26 +1,15 @@
-// import { graphql, Link, useStaticQuery } from "gatsby"
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-// import MenuMobile from "./MenuMobile"
-// import { FaBars } from "react-icons/fa"
-// import './Header.scss'
+import { useRouter } from 'next/router';
 
 const Header = () => {
-  // const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const router = useRouter();
 
-  // const { site } = useStaticQuery(graphql`
-  //   query {
-  //     site {
-  //       data: siteMetadata {
-  //         menu {
-  //           name
-  //           to
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const changeLanguage = (e) => {
+    const locale = e.target.value;
+    router.push(router.pathname, router.asPath, { locale });
+  };
 
   return (
     <header className='header p-3 w-full shadow-md'>
@@ -69,7 +58,10 @@ const Header = () => {
         setIsOpen={setIsMenuOpen}
         links={site.data.menu}
       /> */}
+
+        {/* Nav menu on larger width */}
         <div className='hidden sm:block text-white'>
+          {/* Navbar items */}
           <a className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'>
             Services
           </a>
@@ -79,6 +71,20 @@ const Header = () => {
           <a className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'>
             Workshops
           </a>
+
+          {/* Dropdown of languages */}
+          <select
+            onChange={changeLanguage}
+            defaultValue={router.locale}
+            className='text-white text-shadow-sm text-lg bg-transparent tracking-wide ml-4 cursor-pointer'
+          >
+            <option className='text-black' value='id'>
+              🇮🇩 Indonesia
+            </option>
+            <option className='text-black' value='en'>
+              🇺🇸 English
+            </option>
+          </select>
         </div>
       </nav>
     </header>
