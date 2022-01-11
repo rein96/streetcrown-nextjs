@@ -15,5 +15,11 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     '@next/next/no-img-element': 'off',
+    'require-jsdoc': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'no-unused-vars': 'off',
+    'react/no-unescaped-entities': 'off',
+    // 'react/prop-types': 'off',
+    // 'spaced-comment': 'off',
   },
 };
