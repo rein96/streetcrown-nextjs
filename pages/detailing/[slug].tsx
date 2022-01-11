@@ -1,11 +1,18 @@
 import Button from 'components/Button';
 import Layout from 'components/Layout/Layout';
 import { createClient } from 'contentful';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
+import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 
+interface DetailingPageParams extends ParsedUrlQuery {
+  slug: string;
+}
 interface DetailingPageProps {
+  // TODO_TYPING: add typing []
   detailingService: any;
+  locale?: string;
 }
 
 const client = createClient({
@@ -13,32 +20,46 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_KEY,
 });
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<DetailingPageParams> = async ({
+  locales,
+}) => {
+  // TODO_TYPING
   const res: any = await client.getEntries({
     content_type: 'detailing',
   });
-  // console.log('res getStaticPaths', res);
 
-  const paths = res.items.map((item) => {
-    return {
-      params: { slug: item.fields.slug },
-    };
+  const paths = [];
+  locales.map((locale: 'en' | 'id') => {
+    // TODO_TYPING
+    return res.items.map((item: any) => {
+      paths.push({
+        params: {
+          slug: item.fields.slug,
+        },
+        locale: locale,
+      });
+    });
   });
-  // console.log('paths getStaticPaths', paths);
 
+  // Example output of paths
+  // [ { params: { slug: 'nano-ceramic-coating' }, locale: 'id' },
+  // { params: { slug: 'nano-ceramic-coating' }, locale: 'en' },
+  // { params: ...}, ... ]
   return {
     paths,
     fallback: true,
   };
 };
 
-export const getStaticProps = async ({ params }) => {
-  // console.log('params', params);
+export const getStaticProps: GetStaticProps<DetailingPageProps> = async ({
+  params,
+  locale,
+}) => {
   const { items } = await client.getEntries({
     content_type: 'detailing',
     'fields.slug': params.slug,
+    locale: locale,
   });
-  console.log('items', items);
 
   if (!items.length) {
     return {
@@ -50,15 +71,20 @@ export const getStaticProps = async ({ params }) => {
   }
 
   return {
-    props: { detailingService: items[0] },
+    props: {
+      detailingService: items[0],
+      locale: locale,
+    },
     revalidate: 1,
   };
 };
 
-const DetailingPage: React.FC<DetailingPageProps> = ({ detailingService }) => {
-  console.log('detailingService', detailingService);
-  const fields = detailingService.fields;
-  const { name, description, images } = fields;
+const DetailingPage: React.FC<DetailingPageProps> = ({
+  detailingService,
+  locale,
+}) => {
+  const fields = detailingService?.fields;
+  const { name, description, images } = fields || {};
   return (
     <Layout>
       <div className='detailing-page-container'>
@@ -82,6 +108,8 @@ const DetailingPage: React.FC<DetailingPageProps> = ({ detailingService }) => {
       <div className='flex justify-center'>
         <div className='container p-4 py-10'>
           {/* Description */}
+          {/* TODO: delete locale */}
+          <p className='text-red whitespace-pre-line'>{locale}</p>
           <p className='text-white whitespace-pre-line'>{description}</p>
 
           {/* Images section */}
@@ -97,9 +125,10 @@ const DetailingPage: React.FC<DetailingPageProps> = ({ detailingService }) => {
 
             {/* Images */}
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
-              {images.map((image) => {
+              {images?.map((image: any, index: number) => {
                 return (
                   <Image
+                    key={index}
                     src={'https:' + image.fields.file.url}
                     width={image.fields.file.details.image.width}
                     height={image.fields.file.details.image.height}
