@@ -4,4 +4,8 @@ module.exports = {
   images: {
     domains: ['images.ctfassets.net'],
   },
+  i18n: {
+    locales: ['id', 'en'],
+    defaultLocale: 'id',
+  },
 };
