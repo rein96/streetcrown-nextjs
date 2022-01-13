@@ -22,7 +22,7 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
                 <Link href={`/detailing/${fields.slug}`} key={sys.id}>
                   <div className='detailing-card-container m-4 relative cursor-pointer'>
                     <Image
-                      className='brightness-30 rounded-sm detailing-card-image'
+                      className='hover:scale-125 duration-500 brightness-30 rounded-sm detailing-card-image'
                       src={'https:' + fields.thumbnail.fields.file.url}
                       width={fields.thumbnail.fields.file.details.image.width}
                       height={fields.thumbnail.fields.file.details.image.height}
