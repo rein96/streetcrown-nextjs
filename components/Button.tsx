@@ -27,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({
     );
   } else {
     return (
-      <button className={classes} {...params}>
+      <button type='button' className={classes} {...params}>
         {children}
       </button>
     );
