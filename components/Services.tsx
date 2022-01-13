@@ -20,14 +20,14 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
               const { sys, fields } = service;
               return (
                 <Link href={`/detailing/${fields.slug}`} key={sys.id}>
-                  <div className='card-container m-4 relative cursor-pointer'>
+                  <div className='detailing-card-container m-4 relative cursor-pointer'>
                     <Image
-                      className='brightness-30 rounded-sm'
+                      className='brightness-30 rounded-sm detailing-card-image'
                       src={'https:' + fields.thumbnail.fields.file.url}
                       width={fields.thumbnail.fields.file.details.image.width}
                       height={fields.thumbnail.fields.file.details.image.height}
                     />
-                    <div className='card-content'>
+                    <div className='detailing-card-content'>
                       <h4 className='text-xl border-b pb-1 mb-1'>
                         {fields.name}
                       </h4>
@@ -48,10 +48,11 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
 
       {/* CSS */}
       <style jsx>{`
-        .card-container {
+        .detailing-card-container {
           max-width: 480px;
         }
-        .card-content {
+
+        .detailing-card-content {
           position: absolute;
           top: 50%;
           left: 50%;
