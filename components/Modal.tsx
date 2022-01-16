@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 type ModalButtonType = {
   text: string;
   onClick?: () => void;
 };
-interface ModalProps {
-  children: React.ReactNode;
+export interface ModalProps {
+  children?: React.ReactNode;
   visible: boolean;
   onClose: () => void;
   title?: string;
@@ -34,6 +34,19 @@ const Modal: React.FC<ModalProps> = ({
     }, 480);
   };
 
+  /** Control Body Scroll */
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflowY = 'auto';
+    };
+  }, [visible]);
+
   return (
     <>
       {visible ? (
@@ -45,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
             } animation-fadeIn bg-black bg-opacity-40 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none`}
           >
             <div
-              className='relative w-auto my-6 mx-auto max-w-3xl'
+              className='relative w-auto my-6 mx-auto max-w-3xl min-w-3xl'
               onClick={(e) => e.stopPropagation()}
             >
               {/* content */}
@@ -56,7 +69,7 @@ const Modal: React.FC<ModalProps> = ({
               >
                 {/* header */}
                 <div className='flex items-start justify-between p-5 border-b border-solid border-red rounded-t'>
-                  <h3 className='text-3xl font-semibold text-white'>{title}</h3>
+                  <h3 className='text-xl font-semibold text-white'>{title}</h3>
                   {/* Close Button */}
                   <button
                     className='p-1 ml-auto bg-transparent opacity-70 border-0 text-white float-right text-3xl leading-none font-semibold outline-none focus:outline-none'
@@ -68,10 +81,8 @@ const Modal: React.FC<ModalProps> = ({
                   </button>
                 </div>
                 {/* body */}
-                <div className='relative p-6 flex-auto'>
-                  <p className='my-4 text-blueGray-500 text-lg leading-relaxed text-white'>
-                    {children}
-                  </p>
+                <div className='modal-body relative p-6 flex-auto'>
+                  {children}
                 </div>
                 {/* footer */}
                 <div className='flex items-center justify-end p-6 border-t border-solid border-red rounded-b'>
@@ -101,11 +112,48 @@ const Modal: React.FC<ModalProps> = ({
         </>
       ) : null}
 
-      {/* <style jsx>{`
-        .modal-content {
-          animation: fadeInUp 0.4s;
+      <style jsx>{`
+        .modal-body::-webkit-scrollbar {
+          -webkit-appearance: none;
+          width: 7px;
         }
-      `}</style> */}
+        .modal-body::-webkit-scrollbar-thumb {
+          background: #f1f1f1;
+        }
+
+        .modal-body {
+          max-height: 400px;
+          overflow-y: scroll;
+        }
+        @media only screen and (max-width: 320px) {
+          .modal-body {
+            min-width: 300px;
+          }
+        }
+        @media (min-width: 320px) and (max-width: 500px) {
+          .modal-body {
+            min-width: 360px;
+          }
+        }
+
+        @media (min-width: 501px) and (max-width: 640px) {
+          .modal-body {
+            min-width: 480px;
+          }
+        }
+
+        @media (min-width: 641px) and (max-width: 768px) {
+          .modal-body {
+            min-width: 620px;
+          }
+        }
+
+        @media (min-width: 769px) {
+          .modal-body {
+            min-width: 740px;
+          }
+        }
+      `}</style>
     </>
   );
 };
