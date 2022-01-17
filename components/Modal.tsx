@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 type ModalButtonType = {
   text: string;
   onClick?: () => void;
+  isDisabled?: boolean;
 };
 export interface ModalProps {
   children?: React.ReactNode;
@@ -88,8 +89,9 @@ const Modal: React.FC<ModalProps> = ({
                 <div className='flex items-center justify-end p-6 border-t border-solid border-red rounded-b'>
                   {secondaryButton?.text && (
                     <button
-                      className='text-white background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                      className={`text-white background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`}
                       type='button'
+                      style={{ color: 'white' }}
                       onClick={secondaryButton?.onClick}
                     >
                       {secondaryButton.text}
@@ -97,7 +99,11 @@ const Modal: React.FC<ModalProps> = ({
                   )}
                   {primaryButton?.text && (
                     <button
-                      className='bg-red text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                      className={`${
+                        primaryButton?.isDisabled
+                          ? 'bg-greyDisabled cursor-not-allowed'
+                          : 'cursor-pointer'
+                      } bg-red text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`}
                       type='button'
                       onClick={primaryButton?.onClick}
                     >
@@ -122,7 +128,7 @@ const Modal: React.FC<ModalProps> = ({
         }
 
         .modal-body {
-          max-height: 400px;
+          height: 400px;
           overflow-y: scroll;
         }
         @media only screen and (max-width: 320px) {
