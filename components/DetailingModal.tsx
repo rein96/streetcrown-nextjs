@@ -13,6 +13,7 @@ interface StepperType {
   text: string;
 }
 
+/** Detailing Modal to let user books a detailing service */
 const DetailingModal: React.FC<DetailingModalProps> = ({
   visible,
   onClose,
@@ -99,7 +100,7 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
     const locations = ['Jakarta', 'Bandung'];
 
     return (
-      <div className='locaiton-element mt-8 p-4 flex justify-center'>
+      <div className='location-element mt-8 p-4 flex justify-center animation-fadeIn'>
         <div className='flex flex-col'>
           <p className='text-white text-xl mb-6'>
             Choose our workshop location:
@@ -126,7 +127,7 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   const ServiceElement: React.FC = () => {
     const services = ['Workshop', 'Pickup & Delivery'];
     return (
-      <div className='service-element mt-8 p-4 flex justify-center'>
+      <div className='service-element mt-8 p-4 flex justify-center animation-fadeIn'>
         <div className='flex flex-col'>
           <p className='text-white text-xl mb-6'>Detailling my auto in:</p>
           {services.map((service) => {
@@ -151,7 +152,7 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   /** Render Detail Element */
   const DetailElement: React.FC = () => {
     return (
-      <div className='detailing-element mt-8'>
+      <div className='detailing-element mt-8 animation-fadeIn'>
         <div>
           <div className='flex flex-col'>
             <div className='mx-2 flex-1'>
@@ -370,11 +371,9 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
     >
       <div className='detailing-modal-content'>
         <Steps />
-        <div className={`animation-slideInRight`}>
-          {currentStep === 1 && <LocationElement />}
-          {currentStep === 2 && <ServiceElement />}
-          {currentStep === 3 && <DetailElement />}
-        </div>
+        {currentStep === 1 && <LocationElement />}
+        {currentStep === 2 && <ServiceElement />}
+        {currentStep === 3 && <DetailElement />}
       </div>
     </Modal>
   );
