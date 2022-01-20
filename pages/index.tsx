@@ -41,7 +41,7 @@ const HomePage: React.FC<HomePageProps> = ({ detailingServices }) => {
   // TODO: change to <Section> whenever there is heading in a component
   return (
     <Layout>
-      <Hero />
+      <Hero detailingServices={detailingServices} />
       <Services detailingServices={detailingServices} />
       <BeforeAfter />
       <Location />

@@ -1,22 +1,36 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { getTodayDate } from 'utils';
 import Button from './Button';
 import Modal, { ModalProps } from './Modal';
 
-interface DetailingModalProps extends ModalProps {}
+interface DetailingModalProps extends ModalProps {
+  // TODO_TYPING
+  detailingServices: any[];
+}
 
-type WorkshopLocationType = 'jakarta' | 'bandung' | string | null;
-type StepperStatus = 'DONE' | 'ACTIVE' | 'DISABLED';
-type StepType = 1 | 2 | 3 | number;
 interface StepperType {
   status: StepperStatus;
   stepNumber: number;
   text: string;
 }
 
+interface DetailingFormType {
+  name: string;
+  phoneNumber: string;
+  autoBrand: string;
+  detailingService: string;
+  bookingDate: string;
+}
+
+type WorkshopLocationType = 'jakarta' | 'bandung' | string | null;
+type StepperStatus = 'DONE' | 'ACTIVE' | 'DISABLED';
+type StepType = 1 | 2 | 3 | number;
+
 /** Detailing Modal to let user books a detailing service */
 const DetailingModal: React.FC<DetailingModalProps> = ({
   visible,
   onClose,
+  detailingServices,
 }) => {
   /** Current Step  */
   const [currentStep, setCurrentStep] = useState<StepType>(1);
@@ -53,6 +67,30 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
       text: 'Detail',
     },
   ]);
+
+  /** Detailing Form State */
+  const [formFields, setFormFields] = useState<DetailingFormType>({
+    name: '',
+    phoneNumber: '',
+    autoBrand: '',
+    detailingService: '-',
+    bookingDate: '-',
+  });
+  console.log('formFields', formFields);
+
+  /** Handle dynamic input change from forms */
+  const handleInputChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    const name = event.target.name;
+
+    setFormFields((prev) => ({ ...prev, [name]: value }));
+  };
+
+  /** Handle Form Detail */
+  const handleFormDetail = (event: React.FormEvent) => {
+    alert('An essay was submitted:');
+    event.preventDefault();
+  };
 
   /** Service Step Status */
   const serviceStepStatus = (): StepperStatus => {
@@ -144,63 +182,6 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
               </Button>
             );
           })}
-        </div>
-      </div>
-    );
-  };
-
-  /** Render Detail Element */
-  const DetailElement: React.FC = () => {
-    return (
-      <div className='detailing-element mt-8 animation-fadeIn'>
-        <div>
-          <div className='flex flex-col'>
-            <div className='mx-2 flex-1'>
-              <div className='text-white font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase'>
-                {' '}
-                Name
-              </div>
-              <div className='bg-white my-2 p-1 flex border border-gray-200 rounded'>
-                <input
-                  placeholder='Example: John Doe'
-                  className='p-1 px-2 appearance-none outline-none w-full text-gray-800'
-                />{' '}
-              </div>
-            </div>
-            <div className='mx-2 flex-1'>
-              <div className='text-white font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase'>
-                {' '}
-                Phone Number
-              </div>
-              <div className='bg-white my-2 p-1 flex border border-gray-200 rounded'>
-                <input
-                  placeholder='Example: +628123456789'
-                  className='p-1 px-2 appearance-none outline-none w-full text-gray-800'
-                />{' '}
-              </div>
-            </div>
-            <div className='mx-2 flex-1'>
-              <div className='text-white font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase'>
-                {' '}
-                Auto Brand & Type
-              </div>
-              <div className='bg-white my-2 p-1 flex border border-gray-200 rounded'>
-                <input
-                  placeholder='Example: Toyota Camry or Vespa LX 125'
-                  className='p-1 px-2 appearance-none outline-none w-full text-gray-800'
-                />{' '}
-              </div>
-            </div>
-            <div className='mx-2 flex-1'>
-              <div className='text-white font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase'>
-                {' '}
-                Service
-              </div>
-              <div className='my-2 p-1'>
-                <Button>Select Service</Button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     );
@@ -328,6 +309,9 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   /** Update primary button config state */
   useEffect(() => {
     const primaryButtonConditional = () => {
+      const isBookedButtonDisabled: boolean =
+        !formFields.name || !formFields.phoneNumber || !formFields.autoBrand;
+
       if (currentStep === 1) {
         return {
           text: 'Next',
@@ -351,14 +335,19 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
       if (currentStep === 3) {
         return {
           text: 'Book',
-          isDisabled: false,
+          isDisabled: isBookedButtonDisabled,
           onClick: () => console.log('BOOOKED'),
         };
       }
     };
 
     setPrimaryButtonConfig(primaryButtonConditional());
-  }, [currentStep]);
+  }, [
+    currentStep,
+    formFields.name,
+    formFields.phoneNumber,
+    formFields.autoBrand,
+  ]);
 
   /** Render Modal */
   return (
@@ -373,9 +362,142 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
         <Steps />
         {currentStep === 1 && <LocationElement />}
         {currentStep === 2 && <ServiceElement />}
-        {currentStep === 3 && <DetailElement />}
+        {currentStep === 3 && (
+          <DetailElement
+            handleFormDetail={handleFormDetail}
+            formFields={formFields}
+            handleInputChange={handleInputChange}
+            detailingServices={detailingServices}
+          />
+        )}
       </div>
     </Modal>
+  );
+};
+
+interface DetailElementProps {
+  handleFormDetail: (event: React.FormEvent) => void;
+  formFields: DetailingFormType;
+  handleInputChange: (event: any) => void;
+  // TODO_TYPING
+  detailingServices: any[];
+}
+
+/** Render Detail Element */
+const DetailElement: React.FC<DetailElementProps> = ({
+  handleFormDetail,
+  formFields,
+  handleInputChange,
+  detailingServices,
+}) => {
+  return (
+    <form onSubmit={handleFormDetail}>
+      <div className='detailing-element mt-8 animation-fadeIn'>
+        <div>
+          <div className='flex flex-col'>
+            <div className='mx-2 flex-1 mt-4'>
+              <label className='text-white font-bold h-6 mt-3 text-gray-600 text-sm leading-8 uppercase'>
+                {' '}
+                Name
+                <div className='bg-white my-2 p-1 flex border border-gray-200 rounded'>
+                  <input
+                    name='name'
+                    value={formFields.name}
+                    onChange={handleInputChange}
+                    placeholder='Example: John Doe'
+                    className='p-1 px-2 appearance-none outline-none w-full text-black'
+                  />{' '}
+                </div>
+              </label>
+            </div>
+            <div className='mx-2 flex-1 mt-4'>
+              <label className='text-white font-bold h-6 mt-3 text-gray-600 text-sm leading-8 uppercase'>
+                {' '}
+                Phone Number
+                <div className='bg-white my-2 p-1 flex border border-gray-200 rounded'>
+                  <input
+                    name='phoneNumber'
+                    value={formFields.phoneNumber}
+                    onChange={handleInputChange}
+                    type='number'
+                    placeholder='Example: +628123456789'
+                    className='p-1 px-2 appearance-none outline-none w-full text-black'
+                  />{' '}
+                </div>
+              </label>
+            </div>
+            <div className='mx-2 flex-1 mt-4'>
+              <label className='text-white font-bold h-6 mt-3 text-gray-600 text-sm leading-8 uppercase'>
+                {' '}
+                Auto Brand & Type
+                <div className='bg-white my-2 p-1 flex border border-gray-200 rounded'>
+                  <input
+                    name='autoBrand'
+                    value={formFields.autoBrand}
+                    onChange={handleInputChange}
+                    placeholder='Example: Toyota Camry or Vespa LX 125'
+                    className='p-1 px-2 appearance-none outline-none w-full text-black'
+                  />{' '}
+                </div>
+              </label>
+            </div>
+            <div className='mx-2 flex-1 mt-4'>
+              <label className='text-white font-bold h-6 mt-3 text-gray-600 text-sm leading-8 uppercase'>
+                {' '}
+                Service{' '}
+                <p className='text-grey inline-block text-xs opacity-60 ml-1'>
+                  (optional)
+                </p>
+                <div className='my-2 p-1'>
+                  <select
+                    name='detailingService'
+                    onChange={handleInputChange}
+                    defaultValue={formFields.detailingService}
+                    className='cursor-pointer p-2 text-black text-lg text-shadow-sm tracking-wide'
+                  >
+                    <option className='text-black' value='-'>
+                      Select Detailing Service
+                    </option>
+                    {detailingServices.map((service) => {
+                      const { sys, fields } = service;
+                      return (
+                        <option
+                          key={sys.id}
+                          className='text-black'
+                          value={fields.name}
+                        >
+                          {fields.name}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              </label>
+            </div>
+            <div className='mx-2 flex-1 mt-4'>
+              <label className='text-white font-bold h-6 mt-3 text-gray-600 text-sm leading-8 uppercase'>
+                {' '}
+                Booking Date
+                <p className='text-grey inline-block text-xs opacity-60 ml-1'>
+                  (optional)
+                </p>
+                <div className='my-2 p-1'>
+                  <input
+                    name='bookingDate'
+                    type='date'
+                    id='date'
+                    min={getTodayDate()}
+                    value={formFields.bookingDate}
+                    onChange={handleInputChange}
+                    className='text-black'
+                  />
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   );
 };
 

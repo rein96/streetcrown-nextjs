@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import Button from './Button';
 import DetailingModal from './DetailingModal';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  // TODO_TYPING
+  detailingServices: any[];
+}
+
+const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const handleShowModal = () => {
@@ -62,7 +67,11 @@ const Hero: React.FC = () => {
       /> */}
       </div>
 
-      <DetailingModal visible={showModal} onClose={handleCloseModal} />
+      <DetailingModal
+        visible={showModal}
+        onClose={handleCloseModal}
+        detailingServices={detailingServices}
+      />
 
       {/* CSS */}
       <style jsx>{`
