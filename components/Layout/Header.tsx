@@ -3,6 +3,20 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+const StreetCrownLogo = React.forwardRef<HTMLAnchorElement>((props, ref) => {
+  return (
+    <a ref={ref} {...props}>
+      <Image
+        alt='Logo'
+        className='w-24 md:w-32'
+        src='/assets/streetcrown-logo-transparent.svg'
+        width={100}
+        height={50}
+      />
+    </a>
+  );
+});
+
 const Header = () => {
   const router = useRouter();
 
@@ -15,14 +29,8 @@ const Header = () => {
     <header className='header p-3 w-full shadow-md'>
       <nav className='flex justify-between items-center'>
         {/* Logo */}
-        <Link href={'/'}>
-          <Image
-            alt='Logo'
-            className='w-24 md:w-32'
-            src='/assets/streetcrown-logo-transparent.svg'
-            width={100}
-            height={50}
-          />
+        <Link href={'/'} passHref>
+          <StreetCrownLogo />
         </Link>
 
         {/* <Link href={'/'}>
