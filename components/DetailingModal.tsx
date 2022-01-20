@@ -74,7 +74,7 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
     phoneNumber: '',
     autoBrand: '',
     detailingService: '-',
-    bookingDate: '-',
+    bookingDate: '',
   });
   console.log('formFields', formFields);
 
@@ -148,6 +148,7 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
               location.toLowerCase() === workshopLocation?.toLowerCase();
             return (
               <Button
+                key={location}
                 className={`${isLocationSelected ? 'bg-green' : 'bg-red'} mb-6`}
                 data-location={location.toLowerCase()}
                 onClick={handleWorkshopLocation}
@@ -174,6 +175,7 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
 
             return (
               <Button
+                key={service}
                 className={`${isLocationSelected ? 'bg-green' : 'bg-red'} mb-6`}
                 data-service={service.toLowerCase()}
                 onClick={handleServiceType}
