@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+/** StreetCrown logo with forwardRef */
 const StreetCrownLogo = React.forwardRef<HTMLAnchorElement>((props, ref) => {
   return (
     <a ref={ref} {...props}>
@@ -17,6 +18,9 @@ const StreetCrownLogo = React.forwardRef<HTMLAnchorElement>((props, ref) => {
   );
 });
 
+StreetCrownLogo.displayName = 'StreetCrownLogo';
+
+/** Reusable Header / Navbar */
 const Header = () => {
   const router = useRouter();
 
