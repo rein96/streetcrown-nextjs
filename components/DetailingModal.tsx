@@ -1,7 +1,12 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import emailjs from 'emailjs-com';
 import { getTodayDate } from 'utils';
 import Button from './Button';
 import Modal, { ModalProps } from './Modal';
+import { useRouter } from 'next/router';
+
+const JAKARTA_WHATSAPP_NUMBER = '628999993164';
+const BANDUNG_WHATSAPP_NUMBER = '628999993164';
 
 interface DetailingModalProps extends ModalProps {
   // TODO_TYPING
@@ -32,15 +37,20 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   onClose,
   detailingServices,
 }) => {
+  const { locale } = useRouter();
+
   /** Current Step  */
   const [currentStep, setCurrentStep] = useState<StepType>(1);
+
+  /** Show Success Modal */
+  const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
 
   /** Workshop Location */
   const [workshopLocation, setWorkshopLocation] =
     useState<WorkshopLocationType>(null);
 
   /** Service Type */
-  const [serviceType, setServiceType] = useState(null);
+  const [serviceType, setServiceType] = useState<string | null>(null);
 
   /** Primary Button Config */
   const [primaryButtonConfig, setPrimaryButtonConfig] = useState({
@@ -77,6 +87,15 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
     bookingDate: '',
   });
   console.log('formFields', formFields);
+
+  const [formLoading, setFormLoading] = useState<boolean>(false);
+
+  /** Is book button disabled */
+  const isBookedButtonDisabled: boolean =
+    !formFields.name ||
+    !formFields.phoneNumber ||
+    !formFields.autoBrand ||
+    formLoading;
 
   /** Handle dynamic input change from forms */
   const handleInputChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -287,6 +306,72 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
     }
   };
 
+  /** Handle Submit To EmailJS */
+  const handleBookButton = () => {
+    // Disabled state
+    if (isBookedButtonDisabled) return console.log('Disableddddd');
+
+    const data = {
+      from_name: formFields.name,
+      location: workshopLocation,
+      phone_number: formFields.phoneNumber,
+      service_type: serviceType,
+      auto_brand: formFields.autoBrand,
+      detailing_service: formFields.detailingService,
+      booking_date: formFields.bookingDate,
+    };
+    console.log('data', data);
+
+    // Debugging
+    // return setShowSuccessModal(true);
+
+    // Loading
+    setFormLoading(true);
+
+    // Send EmailJS
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
+        data,
+        process.env.NEXT_PUBLIC_USER_ID
+      )
+      .then(
+        function (response) {
+          console.log(response.status, response.text);
+          // Show Success modal
+          if (response.status === 200) {
+            setFormLoading(false);
+            setShowSuccessModal(true);
+          }
+        },
+        function (err) {
+          console.error(err);
+          setFormLoading(false);
+          alert(JSON.stringify(err));
+        }
+      );
+  };
+
+  /** Handle Send WhatsApp */
+  const handleSendWhatsApp = () => {
+    const adminNumber: string =
+      workshopLocation === 'jakarta'
+        ? JAKARTA_WHATSAPP_NUMBER
+        : BANDUNG_WHATSAPP_NUMBER;
+
+    if (locale === 'id')
+      // Open Whatsapp with Indonesian wording
+      return window.open(
+        `https://api.whatsapp.com/send?phone=${adminNumber}&text=Hi%20StreetCrown%2C%20saya%20baru%20saja%20booking%20dari%20website%2C%20berikut%20detailnya%3A%0A%0ANama%3A%20${formFields.name}%0AService%20Type%3A%20${workshopLocation}%0AVehicle%3A%20${formFields.autoBrand}%0ADetailing%20Service%3A%20${formFields.detailingService}%0ABooking%20Date%3A%20${formFields.bookingDate}`
+      );
+
+    // Open Whatsapp with English wording
+    return window.open(
+      `https://api.whatsapp.com/send?phone=${adminNumber}&text=Hi%20StreetCrown%2C%20I%20have%20booked%20from%20your%20website%2C%20here%20is%20the%20detail%3A%0A%0ANama%3A%20${formFields.name}%0AService%20Type%3A%20${workshopLocation}%0AVehicle%3A%20${formFields.autoBrand}%0ADetailing%20Service%3A%20${formFields.detailingService}%0ABooking%20Date%3A%20${formFields.bookingDate}`
+    );
+  };
+
   /** Update steppers state */
   useEffect(() => {
     setSteppers([
@@ -311,9 +396,6 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   /** Update primary button config state */
   useEffect(() => {
     const primaryButtonConditional = () => {
-      const isBookedButtonDisabled: boolean =
-        !formFields.name || !formFields.phoneNumber || !formFields.autoBrand;
-
       if (currentStep === 1) {
         return {
           text: 'Next',
@@ -336,20 +418,15 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
 
       if (currentStep === 3) {
         return {
-          text: 'Book',
+          text: formLoading ? 'Loading...' : 'Book',
           isDisabled: isBookedButtonDisabled,
-          onClick: () => console.log('BOOOKED'),
+          onClick: () => handleBookButton(),
         };
       }
     };
 
     setPrimaryButtonConfig(primaryButtonConditional());
-  }, [
-    currentStep,
-    formFields.name,
-    formFields.phoneNumber,
-    formFields.autoBrand,
-  ]);
+  }, [currentStep, formFields, formLoading]);
 
   /** Render Modal */
   return (
@@ -372,10 +449,46 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
             detailingServices={detailingServices}
           />
         )}
+
+        {/* Success Modal */}
+        <Modal
+          visible={showSuccessModal}
+          onClose={() => setShowSuccessModal(false)}
+          withBorder={false}
+        >
+          <div className='success-modal flex flex-col items-center justify-center text-white h-full'>
+            <PaperPlane />
+            <p className='font-bold mt-5 text-2xl text-green'>
+              Your booking form was sent!
+            </p>
+            <p className='mt-3'>We will contact you soon </p>
+            <p className='mt-9 text-center'>
+              You could message the booking form to our Whatsapp Number directly
+            </p>
+            <Button className='bg-green mt-5' onClick={handleSendWhatsApp}>
+              Send WhatsApp
+            </Button>
+          </div>
+        </Modal>
       </div>
     </Modal>
   );
 };
+
+const PaperPlane = () => (
+  <svg
+    width='60'
+    height='60'
+    viewBox='0 0 60 60'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M60 0L45 55L24.6775 36.9025L44.1825 16.3175L18.0375 34.385L0 30L60 0ZM22.5 41.67V60L30.645 48.9225L22.5 41.67Z'
+      fill='#28B78D'
+    />
+  </svg>
+);
 
 interface DetailElementProps {
   handleFormDetail: (event: React.FormEvent) => void;
@@ -422,7 +535,7 @@ const DetailElement: React.FC<DetailElementProps> = ({
                     value={formFields.phoneNumber}
                     onChange={handleInputChange}
                     type='number'
-                    placeholder='Example: +628123456789'
+                    placeholder='Example: 628123456789'
                     className='p-1 px-2 appearance-none outline-none w-full text-black'
                   />{' '}
                 </div>
