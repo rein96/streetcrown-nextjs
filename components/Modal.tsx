@@ -12,6 +12,7 @@ export interface ModalProps {
   title?: string;
   primaryButton?: ModalButtonType;
   secondaryButton?: ModalButtonType;
+  withBorder?: boolean;
 }
 
 /**
@@ -24,6 +25,7 @@ const Modal: React.FC<ModalProps> = ({
   title,
   secondaryButton,
   primaryButton,
+  withBorder = true,
 }) => {
   const [showCloseAnimation, setShowCloseAnimation] = useState(false);
 
@@ -69,7 +71,11 @@ const Modal: React.FC<ModalProps> = ({
                 } bg-dark border-0 rounded-lg shadow-lg relative flex flex-col w-full outline-none focus:outline-none`}
               >
                 {/* header */}
-                <div className='flex items-start justify-between p-5 border-b border-solid border-red rounded-t'>
+                <div
+                  className={`flex items-start justify-between p-5 border-solid ${
+                    withBorder ? 'border-b' : ''
+                  } border-red rounded-t`}
+                >
                   <h3 className='text-xl font-semibold text-white'>{title}</h3>
                   {/* Close Button */}
                   <button
@@ -86,7 +92,11 @@ const Modal: React.FC<ModalProps> = ({
                   {children}
                 </div>
                 {/* footer */}
-                <div className='flex items-center justify-end p-6 border-t border-solid border-red rounded-b'>
+                <div
+                  className={`flex items-center justify-end p-6 ${
+                    withBorder ? 'border-t' : ''
+                  } border-solid border-red rounded-b`}
+                >
                   {secondaryButton?.text && (
                     <button
                       className={`text-white background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`}
