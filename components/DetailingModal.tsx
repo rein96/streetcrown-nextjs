@@ -4,10 +4,10 @@ import { getTodayDate } from 'utils';
 import Button from './Button';
 import Modal, { ModalProps } from './Modal';
 import { useRouter } from 'next/router';
-
-const JAKARTA_WHATSAPP_NUMBER = '628999993164';
-const BANDUNG_WHATSAPP_NUMBER = '628999993164';
-
+import {
+  JAKARTA_WHATSAPP_NUMBER,
+  BANDUNG_WHATSAPP_NUMBER,
+} from 'constants/index';
 interface DetailingModalProps extends ModalProps {
   // TODO_TYPING
   detailingServices: any[];
