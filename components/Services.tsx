@@ -1,22 +1,38 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import SectionTitle from './SectionTitle';
 
 interface ServicesProps {
+  // TODO_TYPING
   detailingServices: any[];
 }
 
+/** List of detailing services */
 const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
+  /** Show More button flag */
+  const [showMore, setShowMore] = useState<boolean>(true);
+
+  /** Showed detailing services */
+  const [showedList, setShowedList] = useState(detailingServices.slice(0, 3));
+
+  /** Handle show more detailing list (all list) */
+  const handleShowMoreList = () => {
+    setShowedList(detailingServices);
+
+    setShowMore(false);
+  };
+
   return (
     <>
       <div className='flex-center-center -mb-16'>
         <div className='container relative -top-28'>
           <SectionTitle firstWords='Our' secondWords={'Services'} />
-          <div className='cards-container w-full flex items-center justify-center flex-col md:flex-row text-center'>
-            {detailingServices.map((service) => {
-              console.log('single service', service);
+          <div className='cards-container w-full flex flex-wrap items-center justify-center flex-col md:flex-row text-center'>
+            {/* Responsive alternative: Grid */}
+            {/* <div className='cards-container w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center'> */}
+            {showedList.map((service) => {
               const { sys, fields } = service;
               return (
                 <Link href={`/detailing/${fields.slug}`} key={sys.id}>
@@ -28,21 +44,28 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
                       height={fields.thumbnail.fields.file.details.image.height}
                     />
                     <div className='detailing-card-content'>
-                      <h4 className='text-xl border-b pb-1 mb-1'>
-                        {fields.name}
-                      </h4>
-                      <p className='text-xs text-grey opacity-80'>
-                        {fields.subtitle.toUpperCase()}
-                      </p>
+                      {/* Detailing Title / Name */}
+                      <h4 className='text-xl'>{fields.name}</h4>
+                      {/* Subtitle */}
+                      {fields?.subtitle && (
+                        <p className='text-xs text-grey opacity-80 border-t pt-1 mt-1'>
+                          {fields.subtitle.toUpperCase()}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </Link>
               );
             })}
           </div>
-          <div className='flex-center-center'>
-            <Button className='py-2'>Load More Services</Button>
-          </div>
+          {/* Show More Services button */}
+          {showMore && (
+            <div className='flex-center-center'>
+              <Button className='py-2' onClick={handleShowMoreList}>
+                Show More Services
+              </Button>
+            </div>
+          )}
         </div>
       </div>
 
