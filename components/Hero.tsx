@@ -1,3 +1,6 @@
+import en from 'locales/en';
+import id from 'locales/id';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Button from './Button';
 import DetailingModal from './DetailingModal';
@@ -8,6 +11,10 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
+  const router = useRouter();
+  const { locale } = router;
+  const translate = locale === 'en' ? en : id;
+
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const handleShowModal = () => {
@@ -39,7 +46,7 @@ const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
             </div>
           </h2>
           <Button className='mt-4' onClick={handleShowModal}>
-            Book Now
+            {translate.book}
           </Button>
         </section>
         <img

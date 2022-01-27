@@ -1,4 +1,5 @@
 export default {
+  book: 'Book Appointment',
   trained_detailer: 'Trained Detailers',
   trainer_detailer_description:
     'Our details have extensive experience and have passed training from the trusted detailers',

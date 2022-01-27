@@ -1,4 +1,5 @@
 export default {
+  book: 'Buat Janji',
   trained_detailer: 'Detailer Terlatih',
   trainer_detailer_description:
     'Detailer kami memiliki pengalaman dan telah melewati training oleh pelatih detailing terpercaya',
