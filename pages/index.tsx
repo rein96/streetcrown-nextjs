@@ -1,6 +1,7 @@
 import Hero from 'components/Hero';
 import Layout from 'components/Layout/Layout';
 import Services from 'components/Services';
+import WhyChooseUs from 'components/WhyChooseUs';
 import Location from 'components/Workshops';
 import { createClient } from 'contentful';
 import { GetStaticProps } from 'next';
@@ -43,6 +44,7 @@ const HomePage: React.FC<HomePageProps> = ({ detailingServices }) => {
     <Layout>
       <Hero detailingServices={detailingServices} />
       <Services detailingServices={detailingServices} />
+      <WhyChooseUs />
       <BeforeAfter />
       <Location />
     </Layout>
