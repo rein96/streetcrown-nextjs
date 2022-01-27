@@ -147,7 +147,7 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
 
       {/* Contact Us Banner */}
       <div
-        className='w-full overflow-hidden relative'
+        className='w-full overflow-hidden relative mb-8'
         style={{ height: '40vh' }}
       >
         <div className='contact-banner-content flex flex-col absolute z-10 w-full text-center'>

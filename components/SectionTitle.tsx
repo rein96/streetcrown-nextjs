@@ -2,13 +2,13 @@ import React from 'react';
 
 interface SectionTitleProps {
   firstWords?: string;
-  secondWords: string;
+  secondWords?: string;
   className?: string;
 }
 
 const SectionTitle: React.FC<SectionTitleProps> = ({
   firstWords = 'Our',
-  secondWords,
+  secondWords = '',
   className = '',
 }) => {
   return (
