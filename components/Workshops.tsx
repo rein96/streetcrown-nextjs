@@ -7,6 +7,7 @@ const Workshops: React.FC = () => {
       <div className='flex-center-center'>
         <div className='container mb-20'>
           <SectionTitle
+            id='workshops'
             firstWords='Our'
             secondWords={'Workshops'}
             className='mb-20 mt-20 pt-8 border-t border-grey'

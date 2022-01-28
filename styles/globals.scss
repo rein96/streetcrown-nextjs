@@ -7,8 +7,17 @@
   --red-ds: #ed5858;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--dark-ds);
+}
+
+p {
+  line-height: 200%;
+  letter-spacing: 0.4px;
 }
 
 .text-red {
@@ -143,6 +152,65 @@ body {
 .animate__fadeOut {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut;
+}
+
+// Slide in right animation
+.animation-slideInRight {
+  animation: slideInRight 0.5s;
+}
+
+@-webkit-keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// Slide in left animation
+.animation-slideInLeft {
+  animation: slideInLeft 0.5s;
+}
+@-webkit-keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 ////////// Beer Slider

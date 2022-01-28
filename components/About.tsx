@@ -66,7 +66,7 @@ const About: React.FC = () => {
         <div className='container'>
           <div className='mb-20 mt-20 pt-8 sm:border-t border-grey' />
           <div className='flex flex-col lg:flex-row'>
-            <div className='text-white flex-1'>
+            <div className='text-white flex-1' id='about'>
               <h3 className='text-3xl'>StreetCrown</h3>
               <div className='red-line bg-red' />
               <p className='my-4 pr-4'>{translate.about}</p>

@@ -24,6 +24,21 @@ StreetCrownLogo.displayName = 'StreetCrownLogo';
 const Header = () => {
   const router = useRouter();
 
+  const navItems = [
+    {
+      name: 'Services',
+    },
+    {
+      name: 'About',
+    },
+    {
+      name: 'Portfolio',
+    },
+    {
+      name: 'Workshops',
+    },
+  ];
+
   const changeLanguage = (e) => {
     const locale = e.target.value;
     router.push(router.pathname, router.asPath, { locale });
@@ -74,15 +89,16 @@ const Header = () => {
         {/* Nav menu on larger width */}
         <div className='hidden sm:block text-white'>
           {/* Navbar items */}
-          <a className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'>
-            Services
-          </a>
-          <a className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'>
-            Before & After
-          </a>
-          <a className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'>
-            Workshops
-          </a>
+          {navItems.map((item) => {
+            return (
+              <a
+                href={`#${item.name.toLowerCase()}`}
+                className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'
+              >
+                {item.name}
+              </a>
+            );
+          })}
 
           {/* Dropdown of languages */}
           <select

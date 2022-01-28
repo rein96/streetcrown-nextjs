@@ -13,6 +13,7 @@ function BeforeAfter() {
       <div className='flex-center-center'>
         <div className='container mb-20'>
           <SectionTitle
+            id='portfolio'
             firstWords={'Our'}
             secondWords={'Before and After Portfolio'}
             className='mb-20 mt-20 pt-8 sm:border-t border-grey'
