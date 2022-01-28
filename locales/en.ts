@@ -18,4 +18,6 @@ export default {
   standardized_procedure: 'Standardized Procedure',
   standardized_procedure_description:
     'We apply our Standard Operating Procedure to make sure we provide the best and most consistent results to all our customers',
+  about:
+    'StreetCrown Auto Detailing is a Professional Auto Detailer for Cars and Motorbikes at Sunter, Jakarta Utara and Bandung. Our services are nano coating or nano ceramic coating, interior detailing, exterior detailing, engine detailng, polishing, and premium washing',
 };
