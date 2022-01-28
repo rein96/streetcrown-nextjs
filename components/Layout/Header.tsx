@@ -117,7 +117,10 @@ const Header = () => {
               <ul className='text-white text-center'>
                 {navItems.map((item) => {
                   return (
-                    <Link href={`${webUrl}#${item.name.toLowerCase()}`}>
+                    <Link
+                      href={`${webUrl}#${item.name.toLowerCase()}`}
+                      key={item.name}
+                    >
                       <li
                         className='text-3xl mb-4'
                         onClick={() => handleCloseMobileMenu()}
