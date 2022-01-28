@@ -90,7 +90,7 @@ const About: React.FC = () => {
               <Slider {...settings}>
                 {images.map((image) => {
                   return (
-                    <div className='px-1'>
+                    <div className='px-1' key={image}>
                       <Image
                         width='400'
                         height='400'

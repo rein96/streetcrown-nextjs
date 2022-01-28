@@ -1,3 +1,4 @@
+import About from 'components/About';
 import Hero from 'components/Hero';
 import Layout from 'components/Layout/Layout';
 import Services from 'components/Services';
@@ -44,6 +45,7 @@ const HomePage: React.FC<HomePageProps> = ({ detailingServices }) => {
     <Layout>
       <Hero detailingServices={detailingServices} />
       <Services detailingServices={detailingServices} />
+      <About />
       <WhyChooseUs />
       <BeforeAfter />
       <Location />
