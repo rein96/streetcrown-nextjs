@@ -5,7 +5,7 @@ const Workshops: React.FC = () => {
   return (
     <>
       <div className='flex-center-center'>
-        <div className='container mb-20'>
+        <div className='container px-4 md:px-0 mb-20'>
           <SectionTitle
             id='workshops'
             firstWords='Our'

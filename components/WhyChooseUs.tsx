@@ -42,7 +42,7 @@ const WhyChooseUs = () => {
   ];
   return (
     <div className='why-choose-us flex-center-center'>
-      <div className='cards-container container'>
+      <div className='cards-container container px-4 md:px-0'>
         <SectionTitle
           firstWords='Why Choose'
           secondWords='StreetCrown'

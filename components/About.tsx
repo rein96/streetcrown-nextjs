@@ -63,7 +63,7 @@ const About: React.FC = () => {
   return (
     <>
       <div className='about-page flex-center-center'>
-        <div className='container'>
+        <div className='container px-4 md:px-0'>
           <div className='mb-20 mt-20 pt-8 sm:border-t border-grey' />
           <div className='flex flex-col lg:flex-row'>
             <div className='text-white flex-1' id='about'>
