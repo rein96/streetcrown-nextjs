@@ -1,16 +1,18 @@
 import Button from 'components/Button';
+import DetailingModal from 'components/DetailingModal';
 import Layout from 'components/Layout/Layout';
 import { createClient } from 'contentful';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import { ParsedUrlQuery } from 'querystring';
-import React from 'react';
+import React, { useState } from 'react';
 
 interface DetailingPageParams extends ParsedUrlQuery {
   slug: string;
 }
 interface DetailingPageProps {
   // TODO_TYPING: add typing []
+  detailingServices: any[];
   detailingService: any;
   locale?: string;
 }
@@ -55,9 +57,14 @@ export const getStaticProps: GetStaticProps<DetailingPageProps> = async ({
   params,
   locale,
 }) => {
-  const { items } = await client.getEntries({
+  const { items }: any = await client.getEntries({
     content_type: 'detailing',
     'fields.slug': params.slug,
+    locale: locale,
+  });
+
+  const res: any = await client.getEntries({
+    content_type: 'serviceList',
     locale: locale,
   });
 
@@ -72,6 +79,7 @@ export const getStaticProps: GetStaticProps<DetailingPageProps> = async ({
 
   return {
     props: {
+      detailingServices: res.items[0].fields?.services,
       detailingService: items[0],
       locale: locale,
     },
@@ -80,11 +88,25 @@ export const getStaticProps: GetStaticProps<DetailingPageProps> = async ({
 };
 
 const DetailingPage: React.FC<DetailingPageProps> = ({
+  detailingServices,
   detailingService,
   locale,
 }) => {
+  console.log('detailingServices', { detailingServices, detailingService });
+  const [showModal, setShowModal] = useState<boolean>(false);
   const fields = detailingService?.fields;
   const { name, description, images } = fields || {};
+
+  const defaultDetailingService = detailingService.fields.name;
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <Layout>
       <div className='detailing-page-container'>
@@ -155,11 +177,20 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
             Contact Us for <span className='text-red'>{name}</span>
           </h4>
           <div className='flex justify-center mt-4'>
-            <Button className='py-2'>Send Message</Button>
+            <Button className='py-2' onClick={handleShowModal}>
+              Contact Us
+            </Button>
           </div>
         </div>
         <Image layout='fill' objectFit='cover' src='/assets/dark-benz.jpg' />
       </div>
+
+      <DetailingModal
+        visible={showModal}
+        onClose={handleCloseModal}
+        detailingServices={detailingServices}
+        defaultDetailingService={defaultDetailingService}
+      />
 
       {/* CSS */}
       <style jsx>{`

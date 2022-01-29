@@ -11,6 +11,7 @@ import {
 interface DetailingModalProps extends ModalProps {
   // TODO_TYPING
   detailingServices: any[];
+  defaultDetailingService?: string; // ex: 'Nano Ceramic Coating'
 }
 
 interface StepperType {
@@ -36,6 +37,7 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   visible,
   onClose,
   detailingServices,
+  defaultDetailingService,
 }) => {
   const { locale } = useRouter();
 
@@ -83,7 +85,7 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
     name: '',
     phoneNumber: '',
     autoBrand: '',
-    detailingService: '-',
+    detailingService: defaultDetailingService ? defaultDetailingService : '-',
     bookingDate: '',
   });
   console.log('formFields', formFields);
