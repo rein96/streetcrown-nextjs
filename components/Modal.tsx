@@ -13,6 +13,7 @@ export interface ModalProps {
   primaryButton?: ModalButtonType;
   secondaryButton?: ModalButtonType;
   withBorder?: boolean;
+  bodyClassName?: string;
 }
 
 /**
@@ -26,6 +27,7 @@ const Modal: React.FC<ModalProps> = ({
   secondaryButton,
   primaryButton,
   withBorder = true,
+  bodyClassName = null,
 }) => {
   const [showCloseAnimation, setShowCloseAnimation] = useState(false);
 
@@ -88,7 +90,9 @@ const Modal: React.FC<ModalProps> = ({
                   </button>
                 </div>
                 {/* body */}
-                <div className='modal-body relative p-6 flex-auto'>
+                <div
+                  className={`modal-body relative p-6 flex-auto ${bodyClassName}`}
+                >
                   {children}
                 </div>
                 {/* footer */}
