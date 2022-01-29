@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import {
   JAKARTA_WHATSAPP_NUMBER,
   BANDUNG_WHATSAPP_NUMBER,
-} from 'constants/index';
+} from 'constants/common';
 interface DetailingModalProps extends ModalProps {
   // TODO_TYPING
   detailingServices: any[];
