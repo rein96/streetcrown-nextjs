@@ -26,7 +26,7 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
 
   return (
     <>
-      <div className='flex-center-center -mb-16'>
+      <section className='flex-center-center -mb-16'>
         <div className='container px-4 md:px-0 relative -top-28'>
           <SectionTitle
             firstWords='Our'
@@ -71,7 +71,7 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
             </div>
           )}
         </div>
-      </div>
+      </section>
 
       {/* CSS */}
       <style jsx>{`

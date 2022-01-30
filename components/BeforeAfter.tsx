@@ -10,7 +10,7 @@ function BeforeAfter() {
 
   return (
     <>
-      <div className='flex-center-center'>
+      <section className='flex-center-center'>
         <div className='container px-4 md:px-0 mb-20'>
           <SectionTitle
             id='portfolio'
@@ -44,7 +44,7 @@ function BeforeAfter() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* CSS */}
       <style jsx>{`
