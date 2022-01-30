@@ -131,8 +131,6 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
 
   /** Detail Step Status */
   const detailStepStatus = (): StepperStatus => {
-    // TODO
-    // if(!!blabla) return 'DONE'
     if (!!serviceType && !!!!workshopLocation) return 'ACTIVE';
     return 'DISABLED';
   };
@@ -208,88 +206,6 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
               >
                 {service}
               </Button>
-            );
-          })}
-        </div>
-      </div>
-    );
-  };
-
-  /** Checkmark SVG */
-  const Checkmark: React.FC = () => (
-    <svg
-      width='16'
-      height='12'
-      viewBox='0 0 12 9'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-    >
-      <path
-        d='M3.72667 7.05333L0.946667 4.27333L0 5.21333L3.72667 8.94L11.7267 0.94L10.7867 0L3.72667 7.05333Z'
-        fill='white'
-      />
-    </svg>
-  );
-
-  /** Render Steps Element */
-  const Steps: React.FC = () => {
-    return (
-      <div className='px-5 pb-5'>
-        <div className='flex items-center'>
-          {steppers.map((step) => {
-            const isDisabled = step.status === 'DISABLED';
-            const isDone = step.status === 'DONE';
-            const isActive = step.status === 'ACTIVE';
-
-            const isCurrentStep = step.stepNumber === currentStep;
-            const isLastIndex = step.stepNumber === 3;
-
-            const disabledClassName =
-              'border-grey bg-greyDisabled cursor-not-allowed';
-            const activeClassName = 'bg-red border-red cursor-pointer';
-
-            /** Step On Click Event */
-            const stepOnClick = (
-              event: React.MouseEvent<HTMLDivElement, MouseEvent>
-            ) => {
-              // Disabled won't trigger anything
-              if (isDisabled) return null;
-
-              // Go to specific stepnumber
-              const stepnumber = Number(event.currentTarget.dataset.stepnumber);
-              setCurrentStep(stepnumber);
-            };
-
-            return (
-              <Fragment key={step.stepNumber}>
-                <div
-                  className='flex items-center text-white relative'
-                  data-stepnumber={step.stepNumber}
-                  onClick={stepOnClick}
-                >
-                  {/* Number or Checkmark */}
-                  <div
-                    className={`${
-                      isDisabled ? disabledClassName : activeClassName
-                    } text-white flex items-center justify-center rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2`}
-                  >
-                    {isDone && <Checkmark />}
-                    {(isActive || isDisabled) && step.stepNumber}
-                  </div>
-                  {/* Text */}
-                  <div
-                    className={`${
-                      isCurrentStep ? 'text-red' : 'text-white'
-                    } absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase`}
-                  >
-                    {step.text}
-                  </div>
-                </div>
-                {/* Line */}
-                {!isLastIndex && (
-                  <div className='flex-auto border-t-2 transition duration-500 ease-in-out border-red'></div>
-                )}
-              </Fragment>
             );
           })}
         </div>
@@ -444,7 +360,11 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
       primaryButton={primaryButtonConfig}
     >
       <div className='detailing-modal-content'>
-        <Steps />
+        <Steps
+          steppers={steppers}
+          currentStep={currentStep}
+          setCurrentStep={setCurrentStep}
+        />
         {currentStep === 1 && <LocationElement />}
         {currentStep === 2 && <ServiceElement />}
         {currentStep === 3 && (
@@ -481,20 +401,81 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   );
 };
 
-const PaperPlane = () => (
-  <svg
-    width='60'
-    height='60'
-    viewBox='0 0 60 60'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <path
-      d='M60 0L45 55L24.6775 36.9025L44.1825 16.3175L18.0375 34.385L0 30L60 0ZM22.5 41.67V60L30.645 48.9225L22.5 41.67Z'
-      fill='#28B78D'
-    />
-  </svg>
-);
+interface StepsProps {
+  steppers: StepperType[];
+  currentStep: number;
+  setCurrentStep: (number: number) => void;
+}
+
+/** Render Steps Element */
+const Steps: React.FC<StepsProps> = ({
+  steppers,
+  currentStep,
+  setCurrentStep,
+}) => {
+  return (
+    <div className='px-5 pb-5'>
+      <div className='flex items-center'>
+        {steppers.map((step) => {
+          const isDisabled = step.status === 'DISABLED';
+          const isDone = step.status === 'DONE';
+          const isActive = step.status === 'ACTIVE';
+
+          const isCurrentStep = step.stepNumber === currentStep;
+          const isLastIndex = step.stepNumber === 3;
+
+          const disabledClassName =
+            'border-grey bg-greyDisabled cursor-not-allowed';
+          const activeClassName = 'bg-red border-red cursor-pointer';
+
+          /** Step On Click Event */
+          const stepOnClick = (
+            event: React.MouseEvent<HTMLDivElement, MouseEvent>
+          ) => {
+            // Disabled won't trigger anything
+            if (isDisabled) return null;
+
+            // Go to specific stepnumber
+            const stepnumber = Number(event.currentTarget.dataset.stepnumber);
+            setCurrentStep(stepnumber);
+          };
+
+          return (
+            <Fragment key={step.stepNumber}>
+              <div
+                className='flex items-center text-white relative'
+                data-stepnumber={step.stepNumber}
+                onClick={stepOnClick}
+              >
+                {/* Number or Checkmark */}
+                <div
+                  className={`${
+                    isDisabled ? disabledClassName : activeClassName
+                  } text-white flex items-center justify-center rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2`}
+                >
+                  {isDone && <Checkmark />}
+                  {(isActive || isDisabled) && step.stepNumber}
+                </div>
+                {/* Text */}
+                <div
+                  className={`${
+                    isCurrentStep ? 'text-red' : 'text-white'
+                  } absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase`}
+                >
+                  {step.text}
+                </div>
+              </div>
+              {/* Line */}
+              {!isLastIndex && (
+                <div className='flex-auto border-t-2 transition duration-500 ease-in-out border-red'></div>
+              )}
+            </Fragment>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
 interface DetailElementProps {
   handleFormDetail: (event: React.FormEvent) => void;
@@ -620,5 +601,37 @@ const DetailElement: React.FC<DetailElementProps> = ({
     </form>
   );
 };
+
+/** PaperPlane SVG */
+const PaperPlane = () => (
+  <svg
+    width='60'
+    height='60'
+    viewBox='0 0 60 60'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M60 0L45 55L24.6775 36.9025L44.1825 16.3175L18.0375 34.385L0 30L60 0ZM22.5 41.67V60L30.645 48.9225L22.5 41.67Z'
+      fill='#28B78D'
+    />
+  </svg>
+);
+
+/** Checkmark SVG */
+const Checkmark = () => (
+  <svg
+    width='16'
+    height='12'
+    viewBox='0 0 12 9'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M3.72667 7.05333L0.946667 4.27333L0 5.21333L3.72667 8.94L11.7267 0.94L10.7867 0L3.72667 7.05333Z'
+      fill='white'
+    />
+  </svg>
+);
 
 export default DetailingModal;
