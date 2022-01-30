@@ -142,8 +142,6 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
       <div className='flex justify-center'>
         <div className='container p-4 py-10'>
           {/* Description */}
-          {/* TODO: delete locale */}
-          <p className='text-red whitespace-pre-line'>{locale}</p>
           <p className='text-white whitespace-pre-line'>{description}</p>
 
           {/* Images section */}
