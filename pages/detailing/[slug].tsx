@@ -49,7 +49,10 @@ export const getStaticPaths: GetStaticPaths<DetailingPageParams> = async ({
   // { params: ...}, ... ]
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
+    // 'fallback: blocking' will server-render pages
+    // on-demand if the path doesn't exist.
+    // the response is blocked until a new page is ready
   };
 };
 
@@ -83,7 +86,7 @@ export const getStaticProps: GetStaticProps<DetailingPageProps> = async ({
       detailingService: items[0],
       locale: locale,
     },
-    revalidate: 1,
+    revalidate: Number(process.env.REVALIDATE_SECONDS),
   };
 };
 
@@ -92,7 +95,6 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
   detailingService,
   locale,
 }) => {
-  console.log('detailingServices', { detailingServices, detailingService });
   const [showModal, setShowModal] = useState<boolean>(false);
   const fields = detailingService?.fields;
   const { name, description, images } = fields || {};
@@ -161,9 +163,9 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
           </div>
 
           {/* Button */}
-          <div className='flex justify-center mt-6'>
+          {/* <div className='flex justify-center mt-6'>
             <Button className='py-2'>Load More</Button>
-          </div>
+          </div> */}
         </div>
       </div>
 

@@ -5,7 +5,7 @@ import Services from 'components/Services';
 import WhyChooseUs from 'components/WhyChooseUs';
 import Location from 'components/Workshops';
 import { createClient } from 'contentful';
-import { GetStaticProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
@@ -36,11 +36,11 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async ({
     props: {
       detailingServices: res.items[0].fields.services,
     },
+    revalidate: Number(process.env.REVALIDATE_SECONDS),
   };
 };
 
-const HomePage: React.FC<HomePageProps> = ({ detailingServices }) => {
-  // TODO: change to <Section> whenever there is heading in a component
+const HomePage: NextPage<HomePageProps> = ({ detailingServices }) => {
   return (
     <Layout>
       <Hero detailingServices={detailingServices} />
