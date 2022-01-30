@@ -20,6 +20,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'no-unused-vars': 'off',
     'react/no-unescaped-entities': 'off',
+    'react/prop-types': 'off',
     // 'react/prop-types': 'off',
     // 'spaced-comment': 'off',
   },
