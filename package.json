@@ -19,6 +19,7 @@
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@types/gtag.js": "^0.0.8",
     "@types/node": "17.0.5",
     "@types/react": "17.0.38",
     "@types/react-slick": "^0.23.8",
