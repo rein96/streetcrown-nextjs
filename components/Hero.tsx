@@ -2,12 +2,12 @@ import en from 'locales/en';
 import id from 'locales/id';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { DetailingServiceType } from 'types/detailing';
 import Button from './Button';
 import DetailingModal from './DetailingModal';
 
 interface HeroProps {
-  // TODO_TYPING
-  detailingServices: any[];
+  detailingServices: DetailingServiceType[];
 }
 
 const Hero: React.FC<HeroProps> = ({ detailingServices }) => {

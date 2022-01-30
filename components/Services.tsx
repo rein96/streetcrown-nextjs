@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { DetailingServiceType } from 'types/detailing';
 import Button from './Button';
 import SectionTitle from './SectionTitle';
 
 interface ServicesProps {
-  // TODO_TYPING
-  detailingServices: any[];
+  detailingServices: DetailingServiceType[];
 }
 
 /** List of detailing services */

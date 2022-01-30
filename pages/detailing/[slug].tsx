@@ -1,7 +1,10 @@
 import Button from 'components/Button';
 import DetailingModal from 'components/DetailingModal';
 import Layout from 'components/Layout/Layout';
+import Meta from 'components/Meta';
+import { SITE_URL } from 'constants/common';
 import { createClient } from 'contentful';
+import { DetailingFieldsType, DetailingServiceType } from 'types/detailing';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import { ParsedUrlQuery } from 'querystring';
@@ -11,9 +14,8 @@ interface DetailingPageParams extends ParsedUrlQuery {
   slug: string;
 }
 interface DetailingPageProps {
-  // TODO_TYPING: add typing []
-  detailingServices: any[];
-  detailingService: any;
+  detailingServices: DetailingServiceType[];
+  detailingService: DetailingServiceType;
   locale?: string;
 }
 
@@ -95,9 +97,11 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
   detailingService,
   locale,
 }) => {
+  console.log('detailingServices', detailingServices);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const fields = detailingService?.fields;
-  const { name, description, images } = fields || {};
+  const fields: DetailingFieldsType = detailingService?.fields;
+  // console.log('detailingService', detailingService);
+  const { name, description, images, slug } = fields || {};
 
   const defaultDetailingService = detailingService.fields.name;
 
@@ -111,6 +115,13 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
 
   return (
     <Layout>
+      <Meta
+        title={`${name} | StreetCrown`}
+        description={description}
+        ogDescription={description}
+        canonicalUrl={`${SITE_URL}/detailing/${slug}`}
+        ogUrl={`${SITE_URL}/detailing/${slug}`}
+      />
       <div className='detailing-page-container'>
         {/* Banner Image */}
         <div

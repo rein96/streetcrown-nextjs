@@ -8,9 +8,9 @@ import {
   JAKARTA_WHATSAPP_NUMBER,
   BANDUNG_WHATSAPP_NUMBER,
 } from 'constants/common';
+import { DetailingServiceType } from 'types/detailing';
 interface DetailingModalProps extends ModalProps {
-  // TODO_TYPING
-  detailingServices: any[];
+  detailingServices: DetailingServiceType[];
   defaultDetailingService?: string; // ex: 'Nano Ceramic Coating'
 }
 
@@ -494,8 +494,7 @@ interface DetailElementProps {
   handleFormDetail: (event: React.FormEvent) => void;
   formFields: DetailingFormType;
   handleInputChange: (event: any) => void;
-  // TODO_TYPING
-  detailingServices: any[];
+  detailingServices: DetailingServiceType[];
 }
 
 /** Render Detail Element */
