@@ -1,3 +1,6 @@
+/** Website URL */
+export const SITE_URL = 'https://www.streetcrown.id';
+
 /** Jakarta WhatsApp Number */
 export const JAKARTA_WHATSAPP_NUMBER = '628999993164';
 
