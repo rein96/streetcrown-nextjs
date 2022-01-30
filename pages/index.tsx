@@ -1,6 +1,7 @@
 import About from 'components/About';
 import Hero from 'components/Hero';
 import Layout from 'components/Layout/Layout';
+import Meta from 'components/Meta';
 import Services from 'components/Services';
 import WhyChooseUs from 'components/WhyChooseUs';
 import Location from 'components/Workshops';
@@ -8,6 +9,7 @@ import { createClient } from 'contentful';
 import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import React from 'react';
+import { DetailingServiceType } from 'types/detailing';
 
 /** Dynamic import to prevent getting error of 'window' in build time */
 const BeforeAfter = dynamic(() => import('components/BeforeAfter'), {
@@ -15,8 +17,7 @@ const BeforeAfter = dynamic(() => import('components/BeforeAfter'), {
 });
 
 interface HomePageProps {
-  // TODO_TYPING
-  detailingServices: any[];
+  detailingServices: DetailingServiceType[];
 }
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async ({
@@ -43,6 +44,7 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async ({
 const HomePage: NextPage<HomePageProps> = ({ detailingServices }) => {
   return (
     <Layout>
+      <Meta />
       <Hero detailingServices={detailingServices} />
       <Services detailingServices={detailingServices} />
       <About />
