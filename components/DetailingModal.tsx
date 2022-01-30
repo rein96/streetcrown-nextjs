@@ -9,6 +9,8 @@ import {
   BANDUNG_WHATSAPP_NUMBER,
 } from 'constants/common';
 import { DetailingServiceType } from 'types/detailing';
+import en from 'locales/en';
+import id from 'locales/id';
 interface DetailingModalProps extends ModalProps {
   detailingServices: DetailingServiceType[];
   defaultDetailingService?: string; // ex: 'Nano Ceramic Coating'
@@ -40,6 +42,8 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   defaultDetailingService,
 }) => {
   const { locale } = useRouter();
+
+  const translate = locale === 'en' ? en : id;
 
   /** Current Step  */
   const [currentStep, setCurrentStep] = useState<StepType>(1);
@@ -161,7 +165,7 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
       <div className='location-element mt-8 p-4 flex justify-center animation-fadeIn'>
         <div className='flex flex-col'>
           <p className='text-white text-xl mb-6'>
-            Choose our workshop location:
+            {translate.choose_our_workshop_location}:
           </p>
           {locations.map((location) => {
             const isLocationSelected =
@@ -188,7 +192,9 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
     return (
       <div className='service-element mt-8 p-4 flex justify-center animation-fadeIn'>
         <div className='flex flex-col'>
-          <p className='text-white text-xl mb-6'>Detailling my auto in:</p>
+          <p className='text-white text-xl mb-6'>
+            {translate.detailing_my_auto}:
+          </p>
           {services.map((service) => {
             const isLocationSelected =
               service.toLowerCase() === serviceType?.toLowerCase();
@@ -459,14 +465,14 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
           <div className='success-modal flex flex-col items-center justify-center text-white h-full'>
             <PaperPlane />
             <p className='font-bold mt-5 text-2xl text-green'>
-              Your booking form was sent!
+              {translate.booking_form_sent}
             </p>
-            <p className='mt-3'>We will contact you soon </p>
+            <p className='mt-3'>{translate.contact_you} </p>
             <p className='mt-9 text-center'>
-              You could message the booking form to our Whatsapp Number directly
+              {translate.booking_form_whatsapp}
             </p>
             <Button className='bg-green mt-5' onClick={handleSendWhatsApp}>
-              Send WhatsApp
+              {translate.send_whatsapp}
             </Button>
           </div>
         </Modal>

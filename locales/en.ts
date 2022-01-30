@@ -20,4 +20,13 @@ export default {
     'We apply our Standard Operating Procedure to make sure we provide the best and most consistent results to all our customers',
   about:
     'StreetCrown Auto Detailing is a Professional Auto Detailer for Cars and Motorbikes at Sunter Jakarta Utara, and Bandung. Our services are nano-coating or nano-ceramic coating, interior detailing, exterior detailing, engine detailing, polishing, and premium washing',
+  // Booking form
+  choose_our_workshop_location: 'Choose our workshop location',
+  detailing_my_auto: 'Detailing my auto in',
+  booking_details: 'My booking details',
+  booking_form_sent: 'Your booking form was sent!',
+  contact_you: 'We will contact you soon',
+  booking_form_whatsapp:
+    'You could message the booking form to our Whatsapp Number directly',
+  send_whatsapp: 'Send WhatsApp',
 };
