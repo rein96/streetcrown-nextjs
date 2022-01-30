@@ -3,12 +3,16 @@ import DetailingModal from 'components/DetailingModal';
 import Layout from 'components/Layout/Layout';
 import Meta from 'components/Meta';
 import { SITE_URL } from 'constants/common';
-import { createClient } from 'contentful';
-import { DetailingFieldsType, DetailingServiceType } from 'types/detailing';
+import {
+  DetailingFieldsType,
+  DetailingServiceType,
+  LocaleType,
+} from 'types/detailing';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import { ParsedUrlQuery } from 'querystring';
 import React, { useState } from 'react';
+import { contentfulClient } from 'lib/contentful';
 
 interface DetailingPageParams extends ParsedUrlQuery {
   slug: string;
@@ -19,21 +23,16 @@ interface DetailingPageProps {
   locale?: string;
 }
 
-const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-});
-
 export const getStaticPaths: GetStaticPaths<DetailingPageParams> = async ({
   locales,
 }) => {
   // TODO_TYPING
-  const res: any = await client.getEntries({
+  const res: any = await contentfulClient.getEntries({
     content_type: 'detailing',
   });
 
   const paths = [];
-  locales.map((locale: 'en' | 'id') => {
+  locales.map((locale: LocaleType) => {
     // TODO_TYPING
     return res.items.map((item: any) => {
       paths.push({
@@ -62,13 +61,13 @@ export const getStaticProps: GetStaticProps<DetailingPageProps> = async ({
   params,
   locale,
 }) => {
-  const { items }: any = await client.getEntries({
+  const { items }: any = await contentfulClient.getEntries({
     content_type: 'detailing',
     'fields.slug': params.slug,
     locale: locale,
   });
 
-  const res: any = await client.getEntries({
+  const res: any = await contentfulClient.getEntries({
     content_type: 'serviceList',
     locale: locale,
   });

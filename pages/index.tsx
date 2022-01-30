@@ -5,7 +5,7 @@ import Meta from 'components/Meta';
 import Services from 'components/Services';
 import WhyChooseUs from 'components/WhyChooseUs';
 import Location from 'components/Workshops';
-import { createClient } from 'contentful';
+import { contentfulClient } from 'lib/contentful';
 import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import React from 'react';
@@ -23,12 +23,7 @@ interface HomePageProps {
 export const getStaticProps: GetStaticProps<HomePageProps> = async ({
   locale,
 }) => {
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID,
-    accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-  });
-
-  const res: any = await client.getEntries({
+  const res: any = await contentfulClient.getEntries({
     content_type: 'serviceList',
     locale: locale, // 'id' or 'en'
   });
