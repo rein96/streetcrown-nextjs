@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
     <>
       <div className='hero-container flex items-center justify-center'>
         <section className='hero-content absolute text-center font-semibold text-white'>
-          <h1 className='streetcrown-title-h1 text-xl lg:text-2xl tracking-wider'>
+          <h1 className='streetcrown-title-h1 text-lg lg:text-2xl tracking-wider'>
             <span className='text-red'>StreetCrown</span> | Professional Auto
             Detailer
           </h1>
@@ -37,7 +37,7 @@ const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
             <span className='text-red'>Shiny</span> <span>inside</span>{' '}
             <span className='text-red'>Shiny</span> <span>outside</span>
           </h2>
-          <h2 className='streetcrown-slogan-mobile tracking-wider'>
+          <h2 className='streetcrown-slogan-mobile tracking-wider mx-4'>
             <div className='text-left'>
               <span className='text-red'>Shiny</span> <span>inside</span>
             </div>
@@ -102,9 +102,6 @@ const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
         @media only screen and (max-width: 639px) {
           .hero-portrait {
             display: block;
-          }
-          .streetcrown-title-h1 {
-            font-size: 1rem;
           }
 
           .streetcrown-slogan-large {

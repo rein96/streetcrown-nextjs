@@ -88,7 +88,6 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
     detailingService: defaultDetailingService ? defaultDetailingService : '-',
     bookingDate: '',
   });
-  console.log('formFields', formFields);
 
   const [formLoading, setFormLoading] = useState<boolean>(false);
 
@@ -322,7 +321,6 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
       detailing_service: formFields.detailingService,
       booking_date: formFields.bookingDate,
     };
-    console.log('data', data);
 
     // Debugging
     // return setShowSuccessModal(true);

@@ -97,7 +97,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {showMobileMenu && (
-          <div className='bg-dark fixed h-screen w-screen top-0 left-0 z-40'>
+          <div className='bg-dark fixed h-screen w-screen top-0 left-0 z-40 animation-fadeIn'>
             {/* Header */}
             <div className='flex justify-between items-center p-3'>
               {/* Logo */}
