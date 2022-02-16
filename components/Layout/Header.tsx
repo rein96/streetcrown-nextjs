@@ -153,13 +153,14 @@ const Header = () => {
           {/* Navbar items */}
           {navItems.map((item) => {
             return (
-              <a
+              <Link
+                href={`${webUrl}#${item.name.toLowerCase()}`}
                 key={item.name}
-                href={`#${item.name.toLowerCase()}`}
-                className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'
               >
-                {item.name}
-              </a>
+                <a className='ml-6 sm:ml-8 text-sm sm:text-base font-medium px-px border-b-2 pb-2 border-transparent hover:border-red-200 transition duration-150 ease-in-out text-white cursor-pointer'>
+                  {item.name}
+                </a>
+              </Link>
             );
           })}
 
