@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
     <>
       <div className='hero-container flex items-center justify-center'>
         <section className='hero-content absolute text-center font-semibold text-white'>
-          <h1 className='streetcrown-title-h1 text-lg lg:text-2xl tracking-wider'>
+          <h1 className='streetcrown-title-h1 text-base lg:text-2xl tracking-wider'>
             <span className='text-red'>StreetCrown</span> | Professional Auto
             Detailer
           </h1>
