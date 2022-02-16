@@ -5,14 +5,15 @@ import { useRouter } from 'next/router';
 
 /** StreetCrown logo with forwardRef */
 const StreetCrownLogo = React.forwardRef<HTMLAnchorElement>((props, ref) => {
+  const height = 40;
   return (
-    <a ref={ref} {...props}>
+    <a ref={ref} style={{ height }} {...props}>
       <Image
         alt='Logo'
         className='w-24 md:w-32'
         src='/assets/streetcrown-logo-transparent.svg'
         width={100}
-        height={50}
+        height={height}
       />
     </a>
   );
