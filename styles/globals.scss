@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -38,6 +39,42 @@ p {
 .animation-fadeInUp {
   animation: fadeInUp 0.5s;
 }
+
+// Fade Out Down Animation
+.animation-fadeOutDown {
+  animation: fadeOutDown 0.5s;
+}
+
+// Fade In animation
+.animation-fadeIn {
+  animation: fadeIn 0.5s;
+}
+
+// Fade In animation
+.animation-fadeOut {
+  animation: fadeOut 0.5s;
+}
+
+// Slide in right animation
+.animation-slideInRight {
+  animation: slideInRight 0.5s;
+}
+
+// Slide in left animation
+.animation-slideInLeft {
+  animation: slideInLeft 0.5s;
+}
+
+// Slide in left animation
+.animation-slideInUp {
+  animation: slideInUp 0.5s;
+}
+
+// Slide in left animation
+.animation-slideOutDown {
+  animation: slideOutDown 0.5s;
+}
+
 @-webkit-keyframes fadeInUp {
   from {
     opacity: 0;
@@ -69,10 +106,6 @@ p {
   animation-name: fadeInUp;
 }
 
-// Fade Out Down Animation
-.animation-fadeOutDown {
-  animation: fadeOutDown 0.5s;
-}
 @-webkit-keyframes fadeOutDown {
   from {
     opacity: 1;
@@ -100,10 +133,6 @@ p {
   animation-name: fadeOutDown;
 }
 
-// Fade In animation
-.animation-fadeIn {
-  animation: fadeIn 0.5s;
-}
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
@@ -127,10 +156,6 @@ p {
   animation-name: fadeIn;
 }
 
-// Fade In animation
-.animation-fadeOut {
-  animation: fadeOut 0.5s;
-}
 @-webkit-keyframes fadeOut {
   from {
     opacity: 1;
@@ -152,11 +177,6 @@ p {
 .animate__fadeOut {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut;
-}
-
-// Slide in right animation
-.animation-slideInRight {
-  animation: slideInRight 0.5s;
 }
 
 @-webkit-keyframes slideInRight {
@@ -184,10 +204,6 @@ p {
   }
 }
 
-// Slide in left animation
-.animation-slideInLeft {
-  animation: slideInLeft 0.5s;
-}
 @-webkit-keyframes slideInLeft {
   from {
     -webkit-transform: translate3d(-100%, 0, 0);
@@ -213,15 +229,57 @@ p {
   }
 }
 
-////////// Beer Slider
-/* html {
-	font-family: Montserrat, sans-serif;
-	line-height: 1.5;
-	color: #fff;
-	font-weight: 300;
-}
-*/
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
 
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@-webkit-keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 140%, 0);
+    transform: translate3d(0, 140%, 0);
+  }
+}
+@keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(0, 140%, 0);
+    transform: translate3d(0, 140%, 0);
+  }
+}
+
+////////// Beer Slider //////////
 .beer-slider[data-beer-label]:after,
 .beer-reveal[data-beer-label]:after {
   text-transform: uppercase;

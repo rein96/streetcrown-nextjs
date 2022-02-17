@@ -58,9 +58,7 @@ const Modal: React.FC<ModalProps> = ({
         <>
           <div
             onClick={handleOnCloseWithAnimation}
-            className={`modal animation-fadeIn ${
-              showCloseAnimation ? 'animation-fadeOut' : ''
-            } animation-fadeIn bg-black bg-opacity-40 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none`}
+            className={`modal bg-black bg-opacity-40 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none`}
           >
             <div
               className='relative w-auto my-6 mx-auto max-w-3xl min-w-3xl'
@@ -68,8 +66,8 @@ const Modal: React.FC<ModalProps> = ({
             >
               {/* content */}
               <div
-                className={`animation-fadeInUp ${
-                  showCloseAnimation ? 'animation-fadeOutDown' : ''
+                className={`animation-slideInUp ${
+                  showCloseAnimation ? 'animation-slideOutDown' : ''
                 } bg-dark border-0 rounded-lg shadow-lg relative flex flex-col w-full outline-none focus:outline-none`}
               >
                 {/* header */}
