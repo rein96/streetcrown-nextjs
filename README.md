@@ -1,3 +1,26 @@
+# StreetCrown | Auto Detailer Web Project
+<img width="604" alt="Screen Shot 2022-02-16 at 23 32 38" src="https://user-images.githubusercontent.com/50010891/154313209-5e476a1c-2644-4dfd-aff4-6fc046687d01.png">
+
+## Tech Stack
+
+- NextJs
+- ReactJs
+- Contentful
+- Tailwind and Sass
+- Email js
+- Google Analytics
+- Static Site Generator
+
+## Features
+
+- Internationalization (i18n) (English 🇺🇸 and Indonesian 🇮🇩)
+- Strongly typed programming language using [Typescript](https://www.typescriptlang.org/) 👮‍♂️
+- Integration with [Contentful](https://www.contentful.com) - automated content model & demo setup
+- Responsive/adaptive images via [next-image](https://nextjs.org/docs/api-reference/next/image)
+- Uses utility-first [TailwindCSS](https://tailwindcss.com/) framework
+- Responsive design (desktop / mobile)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
