@@ -48,11 +48,15 @@ const WhyChooseUs = () => {
           secondWords='StreetCrown'
           className='mb-20 mt-20 pt-8 sm:border-t border-grey'
         />
-        <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-24'>
+        <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {list.map((item) => {
             const Asset = item.asset;
             return (
-              <div className='section-item flex' key={item.title}>
+              <div
+                className='section-item rounded-xl px-4 py-5 flex'
+                style={{ backgroundColor: '#363E46' }}
+                key={item.title}
+              >
                 <div>
                   <Asset />
                 </div>
