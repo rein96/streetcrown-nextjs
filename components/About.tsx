@@ -65,11 +65,13 @@ const About: React.FC = () => {
       <div className='about-page flex-center-center'>
         <div className='container px-4 md:px-0'>
           <div className='mb-20 mt-20 pt-8 sm:border-t border-grey' />
-          <div className='flex flex-col lg:flex-row'>
+          <div className='flex flex-col lg:flex-row gap-5'>
             <div className='text-white flex-1' id='about'>
-              <h3 className='text-3xl'>StreetCrown</h3>
+              <h3 className='text-3xl tracking-widest'>StreetCrown</h3>
               <div className='red-line bg-red' />
-              <p className='my-4 pr-4'>{translate.about}</p>
+              <p className='text-sm lg:text-base leading-6 my-4'>
+                {translate.about}
+              </p>
             </div>
 
             <div className='w-full flex-1'>
@@ -107,8 +109,8 @@ const About: React.FC = () => {
 
       <style jsx>{`
         .red-line {
-          height: 10px;
-          width: 166px;
+          height: 4px;
+          width: 188px;
           border-radius: 20px;
           margin-top: 8px;
         }
