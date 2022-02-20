@@ -10,7 +10,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [y, setY] = useState(0);
 
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
 
   const handleNavigation = useCallback(
     (e) => {
