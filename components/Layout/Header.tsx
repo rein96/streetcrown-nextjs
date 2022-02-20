@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -42,10 +42,15 @@ const X = () => (
     </defs>
   </svg>
 );
+interface HeaderProps {
+  scrollDirection: 'up' | 'down';
+}
 
 /** Reusable Header / Navbar */
-const Header = () => {
+const Header: React.FC<HeaderProps> = ({ scrollDirection }) => {
   const router = useRouter();
+
+  const [showNavbar, setShowNavbar] = useState<boolean>(true);
 
   const webUrl = process.env.NEXT_PUBLIC_URL;
 
@@ -79,8 +84,27 @@ const Header = () => {
     router.push(router.pathname, router.asPath, { locale });
   };
 
+  useEffect(() => {
+    if (scrollDirection === 'down') {
+      setTimeout(() => {
+        setShowNavbar(false);
+      }, 450);
+    } else {
+      setShowNavbar(true);
+    }
+  }, [scrollDirection]);
+
   return (
-    <header className='header p-3 w-full shadow-md'>
+    <header
+      className={`fixed bg-dark header p-3 w-full shadow-md z-10 
+      ${
+        scrollDirection === 'up'
+          ? 'animation-slideInDown'
+          : 'animation-slideOutUp'
+      }
+      ${showNavbar ? 'visible' : 'invisible'}
+      `}
+    >
       <nav className='flex justify-between items-center'>
         {/* Logo */}
         <Link href={'/'} passHref>
@@ -184,4 +208,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);
