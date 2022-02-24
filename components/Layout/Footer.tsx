@@ -9,6 +9,7 @@ function Footer() {
           <div className='footer-logo-container mx-4 py-6'>
             <Image
               src='/assets/streetcrown-round-logo.svg'
+              alt='streetcrown logo'
               width={200}
               height={200}
             />

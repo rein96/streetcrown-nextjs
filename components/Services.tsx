@@ -46,6 +46,7 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
                       src={'https:' + fields.thumbnail.fields.file.url}
                       width={fields.thumbnail.fields.file.details.image.width}
                       height={fields.thumbnail.fields.file.details.image.height}
+                      alt={fields.name}
                     />
                     <div className='detailing-card-content'>
                       {/* Detailing Title / Name */}
