@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
+// import Image from 'next/image';
 import en from 'locales/en';
 import id from 'locales/id';
 import 'slick-carousel/slick/slick.css';
@@ -93,10 +93,18 @@ const About: React.FC = () => {
                 {images.map((image) => {
                   return (
                     <div className='px-1' key={image}>
-                      <Image
+                      {/* Problem using Image from next, the images on the slider look laggy when loaded */}
+                      {/* <Image
                         width='400'
                         height='400'
                         src={`/assets/portfolio/${image}.jpg`}
+                        alt={image}
+                      /> */}
+                      <img
+                        src={`/assets/portfolio/${image}.jpg`}
+                        width='400'
+                        height='400'
+                        alt={image}
                       />
                     </div>
                   );
