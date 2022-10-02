@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DetailingServiceType } from 'types/detailing';
 import Button from './Button';
 import SectionTitle from './SectionTitle';
@@ -15,7 +15,7 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
   const [showMore, setShowMore] = useState<boolean>(true);
 
   /** Showed detailing services */
-  const [showedList, setShowedList] = useState(detailingServices.slice(0, 3));
+  const [showedList, setShowedList] = useState([]);
 
   /** Handle show more detailing list (all list) */
   const handleShowMoreList = () => {
@@ -23,6 +23,23 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
 
     setShowMore(false);
   };
+
+  useEffect(function setInitialList() {
+    setShowedList(detailingServices.slice(0, 3));
+  }, []);
+
+  useEffect(
+    function updateListByLocale() {
+      const showedMore = !showMore;
+      if (showedMore) {
+        setShowedList(detailingServices);
+      } else {
+        setShowedList(detailingServices.slice(0, 3));
+        setShowMore(true);
+      }
+    },
+    [detailingServices]
+  );
 
   return (
     <>
