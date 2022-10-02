@@ -11,7 +11,7 @@ export default {
     'Kami memiliki pengalaman detaiing ke semua jenis kendaraan, sepeda motor, mobil baru, mobil tua, dan sepeda.',
   warranty: 'Warranty',
   warranty_description:
-    'Paket coating memiliki warranty selama 2 tahun *berlaku untuk Nano Ceramic Coating, Diamond Ceramic Coating',
+    'Paket coating memiliki warranty selama 2 - 4 tahun *berlaku untuk Nano Ceramic Coating dan Diamond Ceramic Coating',
   pickup_delivery: 'Tersedia Pick up & Delivery',
   pickup_delivery_description:
     'Kami siap mengantar dan menjemput kendaraan anda',

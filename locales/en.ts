@@ -11,7 +11,7 @@ export default {
     'We have extensive detailing experiences to all vehicles, including, motorcycles, new cars, vintage cars, bicycles',
   warranty: 'Warranty',
   warranty_description:
-    'The coating package has a 2-year warranty *available for Nano Ceramic Coating, Diamond Ceramic Coating',
+    'The coating package has a 2 to 4-year warranty *available for Nano Ceramic Coating, Diamond Ceramic Coating',
   pickup_delivery: 'Pick Up & Delivery Available',
   pickup_delivery_description:
     'We can help you to pick up and deliver your vehicle',
