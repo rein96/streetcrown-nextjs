@@ -11,7 +11,7 @@
     "beerslider": "^1.0.3",
     "contentful": "^9.1.5",
     "emailjs-com": "^3.2.0",
-    "next": "12.0.7",
+    "next": "^12.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-slick": "^0.28.1",
