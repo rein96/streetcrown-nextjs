@@ -4,6 +4,7 @@ interface ResponseData {
   revalidated?: boolean;
   error?: string;
   message?: string;
+  slugToRevalidate?: string;
 }
 
 export default async function handler(
@@ -36,7 +37,7 @@ export default async function handler(
     const slugToRevalidate = body.slugToRevalidate;
     if (slugToRevalidate) {
       await res.revalidate(`/detailing/${slugToRevalidate}`);
-      return res.json({ revalidated: true });
+      return res.json({ revalidated: true, slugToRevalidate });
     }
   } catch (err) {
     // If there was an error, Next.js will continue
