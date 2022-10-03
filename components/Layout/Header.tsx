@@ -1,90 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import LanguageOptions from './components/LanguageOptions';
-
-/** StreetCrown logo with forwardRef */
-const StreetCrownLogo = React.forwardRef<HTMLAnchorElement>((props, ref) => {
-  const height = 40;
-  return (
-    <a ref={ref} style={{ height }} {...props}>
-      <Image
-        alt='Logo'
-        className='w-24 md:w-32'
-        src='/assets/streetcrown-logo-transparent.svg'
-        width={100}
-        height={height}
-      />
-    </a>
-  );
-});
-
-StreetCrownLogo.displayName = 'StreetCrownLogo';
-
-const X = () => (
-  <svg
-    width='24'
-    height='24'
-    viewBox='0 0 24 24'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <g clipPath='url(#clip0_1118_75)'>
-      <path
-        d='M24 20.188L15.685 11.979L23.885 3.697L20.188 0L11.976 8.318L3.666 0.115L0 3.781L8.321 12.021L0.115 20.334L3.781 24L12.018 15.682L20.303 23.885L24 20.188Z'
-        fill='white'
-      />
-    </g>
-    <defs>
-      <clipPath id='clip0_1118_75'>
-        <rect width='24' height='24' fill='white' />
-      </clipPath>
-    </defs>
-  </svg>
-);
+import { LanguageOptions, MobileMenu, StreetCrownLogo } from './components';
+import { navItems } from './Layout.constant';
 interface HeaderProps {
   scrollDirection: 'up' | 'down';
 }
 
 /** Reusable Header / Navbar */
-
 const Header: React.FC<HeaderProps> = ({ scrollDirection }) => {
-  const router = useRouter();
-
   const [showNavbar, setShowNavbar] = useState<boolean>(true);
 
   const webUrl = process.env.NEXT_PUBLIC_URL;
-
-  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
-
-  const navItems = [
-    {
-      name: 'Services',
-    },
-    {
-      name: 'About',
-    },
-    {
-      name: 'Portfolio',
-    },
-    {
-      name: 'Workshops',
-    },
-  ];
-
-  const handleShowMobileMenu = () => {
-    setShowMobileMenu(true);
-  };
-
-  const handleCloseMobileMenu = () => {
-    setShowMobileMenu(false);
-  };
-
-  const changeLanguage = (e) => {
-    const locale = e.target.value;
-    router.push(router.pathname, router.asPath, { locale });
-  };
 
   useEffect(() => {
     if (scrollDirection === 'down') {
@@ -113,67 +39,8 @@ const Header: React.FC<HeaderProps> = ({ scrollDirection }) => {
           <StreetCrownLogo />
         </Link>
 
-        {/* Hamburger menu */}
-        <button
-          className='sm:hidden text-white'
-          onClick={handleShowMobileMenu}
-          aria-label='Open Menu'
-        >
-          <Image src={'/assets/hamburger.svg'} width={30} height={30} />
-        </button>
-
-        {/* Mobile Menu */}
-        {showMobileMenu && (
-          <div className='bg-dark fixed h-screen w-screen top-0 left-0 z-40 animation-fadeIn'>
-            {/* Header */}
-            <div className='flex justify-between items-center p-3'>
-              {/* Logo */}
-              <Link href={'/'} passHref>
-                <StreetCrownLogo />
-              </Link>
-
-              <div className='text-white' onClick={handleCloseMobileMenu}>
-                <X />
-              </div>
-            </div>
-
-            <div
-              className='flex flex-col items-center justify-center'
-              style={{ height: '70vh' }}
-            >
-              <ul className='text-white text-center'>
-                {navItems.map((item) => {
-                  return (
-                    <Link
-                      href={`${webUrl}#${item.name.toLowerCase()}`}
-                      key={item.name}
-                    >
-                      <li
-                        className='text-3xl mb-4'
-                        onClick={() => handleCloseMobileMenu()}
-                      >
-                        {item.name}
-                      </li>
-                    </Link>
-                  );
-                })}
-                {/* Dropdown of languages */}
-                <select
-                  onChange={changeLanguage}
-                  defaultValue={router.locale}
-                  className='text-white text-shadow-sm text-2xl bg-transparent tracking-wide ml-4 cursor-pointer'
-                >
-                  <option className='text-black' value='id'>
-                    🇮🇩 Indonesia
-                  </option>
-                  <option className='text-black' value='en'>
-                    🇺🇸 English
-                  </option>
-                </select>
-              </ul>
-            </div>
-          </div>
-        )}
+        {/* Hamburger and Mobile Menu */}
+        <MobileMenu />
 
         {/* Nav menu on larger width */}
         <div className='hidden sm:block text-white'>
