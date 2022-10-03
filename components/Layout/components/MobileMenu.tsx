@@ -1,13 +1,11 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { navItems } from '../Layout.constant';
 import HamburgerMenu from './HamburgerMenu';
+import LanguageOptions from './LanguageOptions';
 import StreetCrownLogo from './StreetCrownLogo';
 
 function MobileMenu() {
-  const router = useRouter();
-
   const webUrl = process.env.NEXT_PUBLIC_URL;
 
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
@@ -18,11 +16,6 @@ function MobileMenu() {
 
   const handleCloseMobileMenu = () => {
     setShowMobileMenu(false);
-  };
-
-  const changeLanguage = (e: ChangeEvent<HTMLSelectElement>) => {
-    const locale = e.target.value;
-    router.push(router.pathname, router.asPath, { locale });
   };
 
   return (
@@ -67,18 +60,7 @@ function MobileMenu() {
                 );
               })}
               {/* Dropdown of languages */}
-              <select
-                onChange={changeLanguage}
-                defaultValue={router.locale}
-                className='text-white text-shadow-sm text-2xl bg-transparent tracking-wide ml-4 cursor-pointer'
-              >
-                <option className='text-black' value='id'>
-                  🇮🇩 Indonesia
-                </option>
-                <option className='text-black' value='en'>
-                  🇺🇸 English
-                </option>
-              </select>
+              <LanguageOptions onClick={handleCloseMobileMenu} />
             </ul>
           </div>
         </div>

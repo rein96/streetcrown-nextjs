@@ -1,11 +1,21 @@
 import { useRouter } from 'next/router';
+import { ChangeEvent } from 'react';
 
-const LanguageOptions = () => {
+interface LanguageOptionsProps {
+  onClick?: () => void;
+}
+
+const LanguageOptions = ({ onClick }: LanguageOptionsProps) => {
   const router = useRouter();
 
-  const changeLanguage = (e) => {
+  const changeLanguage = (e: ChangeEvent<HTMLSelectElement>) => {
     const locale = e.target.value;
     router.push(router.pathname, router.asPath, { locale });
+
+    // Extra optional onClick
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
