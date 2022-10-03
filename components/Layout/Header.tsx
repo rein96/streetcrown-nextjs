@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import LanguageOptions from './components/LanguageOptions';
 
 /** StreetCrown logo with forwardRef */
 const StreetCrownLogo = React.forwardRef<HTMLAnchorElement>((props, ref) => {
@@ -47,6 +48,7 @@ interface HeaderProps {
 }
 
 /** Reusable Header / Navbar */
+
 const Header: React.FC<HeaderProps> = ({ scrollDirection }) => {
   const router = useRouter();
 
@@ -190,18 +192,7 @@ const Header: React.FC<HeaderProps> = ({ scrollDirection }) => {
           })}
 
           {/* Dropdown of languages */}
-          <select
-            onChange={changeLanguage}
-            defaultValue={router.locale}
-            className='text-white text-shadow-sm text-lg bg-transparent tracking-wide ml-4 cursor-pointer'
-          >
-            <option className='text-black' value='id'>
-              🇮🇩 Indonesia
-            </option>
-            <option className='text-black' value='en'>
-              🇺🇸 English
-            </option>
-          </select>
+          <LanguageOptions />
         </div>
       </nav>
     </header>
