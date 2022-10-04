@@ -3,10 +3,6 @@ import emailjs from 'emailjs-com';
 import Button from '../Button';
 import Modal, { ModalProps } from '../Modal';
 import { useRouter } from 'next/router';
-import {
-  JAKARTA_WHATSAPP_NUMBER,
-  BANDUNG_WHATSAPP_NUMBER,
-} from 'constants/common';
 import { DetailingServiceType } from 'types/detailing';
 import PaperPlane from './components/PaperPlane';
 import Steps from './components/Steps';
@@ -14,6 +10,7 @@ import { en, id } from 'locales';
 import DetailContent from './components/DetailContent';
 import ServiceContent from './components/ServiceContent';
 import LocationContent from './components/LocationContent';
+import SuccessModal from './components/SuccessModal';
 interface DetailingModalProps extends ModalProps {
   detailingServices: DetailingServiceType[];
   defaultDetailingService?: string; // ex: 'Nano Ceramic Coating'
@@ -220,23 +217,8 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
       );
   };
 
-  /** Handle Send WhatsApp */
-  const handleSendWhatsApp = () => {
-    const adminNumber: string =
-      workshopLocation === 'jakarta'
-        ? JAKARTA_WHATSAPP_NUMBER
-        : BANDUNG_WHATSAPP_NUMBER;
-
-    if (locale === 'id')
-      // Open Whatsapp with Indonesian wording
-      return window.open(
-        `https://api.whatsapp.com/send?phone=${adminNumber}&text=Hi%20StreetCrown%2C%20saya%20baru%20saja%20booking%20dari%20website%2C%20berikut%20detailnya%3A%0A%0ANama%3A%20${formFields.name}%0AService%20Type%3A%20${workshopLocation}%0AVehicle%3A%20${formFields.autoBrand}%0ADetailing%20Service%3A%20${formFields.detailingService}%0ABooking%20Date%3A%20${formFields.bookingDate}`
-      );
-
-    // Open Whatsapp with English wording
-    return window.open(
-      `https://api.whatsapp.com/send?phone=${adminNumber}&text=Hi%20StreetCrown%2C%20I%20have%20booked%20from%20your%20website%2C%20here%20is%20the%20detail%3A%0A%0ANama%3A%20${formFields.name}%0AService%20Type%3A%20${workshopLocation}%0AVehicle%3A%20${formFields.autoBrand}%0ADetailing%20Service%3A%20${formFields.detailingService}%0ABooking%20Date%3A%20${formFields.bookingDate}`
-    );
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
   };
 
   /** Update steppers state */
@@ -331,26 +313,12 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
           />
         )}
 
-        {/* Success Modal */}
-        <Modal
+        <SuccessModal
           visible={showSuccessModal}
-          onClose={() => setShowSuccessModal(false)}
-          withBorder={false}
-        >
-          <div className='success-modal flex flex-col items-center justify-center text-white h-full'>
-            <PaperPlane />
-            <p className='font-bold mt-5 text-2xl text-green'>
-              {translate.booking_form_sent}
-            </p>
-            <p className='mt-3'>{translate.contact_you} </p>
-            <p className='mt-9 text-center'>
-              {translate.booking_form_whatsapp}
-            </p>
-            <Button className='bg-green mt-5' onClick={handleSendWhatsApp}>
-              {translate.send_whatsapp}
-            </Button>
-          </div>
-        </Modal>
+          onClick={handleCloseSuccessModal}
+          workshopLocation={workshopLocation}
+          formFields={formFields}
+        />
       </div>
     </Modal>
   );
