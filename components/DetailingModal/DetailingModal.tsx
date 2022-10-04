@@ -13,6 +13,7 @@ import Steps from './components/Steps';
 import { en, id } from 'locales';
 import DetailContent from './components/DetailContent';
 import ServiceContent from './components/ServiceContent';
+import LocationContent from './components/LocationContent';
 interface DetailingModalProps extends ModalProps {
   detailingServices: DetailingServiceType[];
   defaultDetailingService?: string; // ex: 'Nano Ceramic Coating'
@@ -32,7 +33,7 @@ export interface DetailingFormType {
   bookingDate: string;
 }
 
-type WorkshopLocationType = 'jakarta' | 'bandung' | string | null;
+export type WorkshopLocationType = 'jakarta' | 'bandung' | string | null;
 type StepperStatus = 'DONE' | 'ACTIVE' | 'DISABLED';
 type StepType = 1 | 2 | 3 | number;
 
@@ -155,35 +156,6 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
     setServiceType(service);
 
     setCurrentStep(3);
-  };
-
-  /** Render Location Element */
-  const LocationElement: React.FC = () => {
-    const locations = ['Jakarta', 'Bandung'];
-
-    return (
-      <div className='location-element mt-8 p-4 flex justify-center animation-fadeIn'>
-        <div className='flex flex-col'>
-          <p className='text-white text-xl mb-6'>
-            {translate.choose_our_workshop_location}:
-          </p>
-          {locations.map((location) => {
-            const isLocationSelected =
-              location.toLowerCase() === workshopLocation?.toLowerCase();
-            return (
-              <Button
-                key={location}
-                className={`${isLocationSelected ? 'bg-green' : 'bg-red'} mb-6`}
-                data-location={location.toLowerCase()}
-                onClick={handleWorkshopLocation}
-              >
-                {location}
-              </Button>
-            );
-          })}
-        </div>
-      </div>
-    );
   };
 
   /** Back or Secondary button config */
@@ -338,7 +310,12 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
-        {currentStep === 1 && <LocationElement />}
+        {currentStep === 1 && (
+          <LocationContent
+            workshopLocation={workshopLocation}
+            handleWorkshopLocation={handleWorkshopLocation}
+          />
+        )}
         {currentStep === 2 && (
           <ServiceContent
             serviceType={serviceType}
