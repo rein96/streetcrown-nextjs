@@ -10,9 +10,10 @@ import {
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import { ParsedUrlQuery } from 'querystring';
-import React, { useState } from 'react';
+import React from 'react';
 import { contentfulClient } from 'lib/contentful';
 import { DetailingModal } from 'components/DetailingModal';
+import { useRouter } from 'next/router';
 
 interface DetailingPageParams extends ParsedUrlQuery {
   slug: string;
@@ -96,20 +97,33 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
   detailingService,
   locale,
 }) => {
-  console.log('detailingServices', detailingServices);
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const router = useRouter();
+
+  const { pathname, query } = router;
+
+  const detailingModalVisible = router.query?.modal === 'detailing';
+
   const fields: DetailingFieldsType = detailingService?.fields;
-  // console.log('detailingService', detailingService);
   const { name, description, images, slug } = fields || {};
 
   const defaultDetailingService = detailingService.fields.name;
 
   const handleShowModal = () => {
-    setShowModal(true);
+    router.query.modal = 'detailing';
+
+    router.push(
+      {
+        pathname: pathname,
+        query: { ...query },
+      },
+      undefined,
+      { scroll: false, shallow: true }
+    );
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    delete router.query.modal;
+    router.replace({ pathname, query }, undefined, { shallow: true });
   };
 
   return (
@@ -196,7 +210,7 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
       </div>
 
       <DetailingModal
-        visible={showModal}
+        visible={detailingModalVisible}
         onClose={handleCloseModal}
         detailingServices={detailingServices}
         defaultDetailingService={defaultDetailingService}

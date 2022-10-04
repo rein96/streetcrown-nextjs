@@ -12,17 +12,26 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
   const router = useRouter();
-  const { locale } = router;
+  const { locale, pathname, query } = router;
   const translate = locale === 'en' ? en : id;
 
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const detailingModalVisible = router.query?.modal === 'detailing';
 
   const handleShowModal = () => {
-    setShowModal(true);
-  };
+    router.query.modal = 'detailing';
 
+    router.push(
+      {
+        pathname: pathname,
+        query: { ...query },
+      },
+      undefined,
+      { scroll: false, shallow: true }
+    );
+  };
   const handleCloseModal = () => {
-    setShowModal(false);
+    delete router.query.modal;
+    router.replace({ pathname, query }, undefined, { shallow: true });
   };
 
   return (
@@ -75,7 +84,7 @@ const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
       </div>
 
       <DetailingModal
-        visible={showModal}
+        visible={detailingModalVisible}
         onClose={handleCloseModal}
         detailingServices={detailingServices}
       />
