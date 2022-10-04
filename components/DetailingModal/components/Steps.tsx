@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import classNames from 'classnames';
 import Checkmark from './Checkmark';
 
 type StepperStatus = 'DONE' | 'ACTIVE' | 'DISABLED';
@@ -35,6 +36,7 @@ const Steps: React.FC<StepsProps> = ({
           const disabledClassName =
             'border-grey bg-greyDisabled cursor-not-allowed';
           const activeClassName = 'bg-red border-red cursor-pointer';
+          const doneClassName = 'bg-green border-green cursor-pointer';
 
           /** Step On Click Event */
           const stepOnClick = (
@@ -57,9 +59,14 @@ const Steps: React.FC<StepsProps> = ({
               >
                 {/* Number or Checkmark */}
                 <div
-                  className={`${
-                    isDisabled ? disabledClassName : activeClassName
-                  } text-white flex items-center justify-center rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2`}
+                  className={classNames(
+                    'ext-white flex items-center justify-center rounded-full transition duration-500 ease-in-out h-12 w-12 py-3 border-2',
+                    {
+                      [disabledClassName]: isDisabled,
+                      [activeClassName]: isActive,
+                      [doneClassName]: isDone,
+                    }
+                  )}
                 >
                   {isDone && <Checkmark />}
                   {(isActive || isDisabled) && step.stepNumber}
