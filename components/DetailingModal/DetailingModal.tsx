@@ -222,60 +222,66 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   };
 
   /** Update steppers state */
-  useEffect(() => {
-    setSteppers([
-      {
-        status: locationStepStatus(),
-        stepNumber: 1,
-        text: 'Location',
-      },
-      {
-        status: serviceStepStatus(),
-        stepNumber: 2,
-        text: 'Service',
-      },
-      {
-        status: detailStepStatus(),
-        stepNumber: 3,
-        text: 'Detail',
-      },
-    ]);
-  }, [workshopLocation, serviceType]);
+  useEffect(
+    function handleUpdateSteppers() {
+      setSteppers([
+        {
+          status: locationStepStatus(),
+          stepNumber: 1,
+          text: 'Location',
+        },
+        {
+          status: serviceStepStatus(),
+          stepNumber: 2,
+          text: 'Service',
+        },
+        {
+          status: detailStepStatus(),
+          stepNumber: 3,
+          text: 'Detail',
+        },
+      ]);
+    },
+    [workshopLocation, serviceType]
+  );
 
   /** Update primary button config state */
-  useEffect(() => {
-    const primaryButtonConditional = () => {
-      if (currentStep === 1) {
-        return {
-          text: 'Next',
-          isDisabled: !workshopLocation,
-          onClick: () => {
-            if (!!workshopLocation) setCurrentStep(currentStep + 1);
-          },
-        };
-      }
+  useEffect(
+    function handleSetPrimaryButtonConfig() {
+      const primaryButtonConditional = () => {
+        if (currentStep === 1) {
+          return {
+            text: 'Next',
+            isDisabled: !workshopLocation,
+            onClick: () => {
+              if (!!workshopLocation) setCurrentStep(currentStep + 1);
+            },
+          };
+        }
 
-      if (currentStep === 2) {
-        return {
-          text: 'Next',
-          isDisabled: !serviceType,
-          onClick: () => {
-            if (!!serviceType) setCurrentStep(currentStep + 1);
-          },
-        };
-      }
+        if (currentStep === 2) {
+          return {
+            text: 'Next',
+            isDisabled: !serviceType,
+            onClick: () => {
+              if (!!serviceType) setCurrentStep(currentStep + 1);
+            },
+          };
+        }
 
-      if (currentStep === 3) {
-        return {
-          text: formLoading ? 'Loading...' : 'Book',
-          isDisabled: isBookedButtonDisabled,
-          onClick: () => handleBookButton(),
-        };
-      }
-    };
+        if (currentStep === 3) {
+          return {
+            text: formLoading ? 'Loading...' : 'Book',
+            isDisabled: isBookedButtonDisabled,
+            onClick: () => handleBookButton(),
+          };
+        }
+      };
 
-    setPrimaryButtonConfig(primaryButtonConditional());
-  }, [currentStep, formFields, formLoading]);
+      setPrimaryButtonConfig(primaryButtonConditional());
+    },
+    [currentStep, formFields, formLoading]
+  );
 
   /** Render Modal */
   return (
