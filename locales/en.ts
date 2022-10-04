@@ -1,4 +1,4 @@
-export default {
+const en = {
   book: 'Book Appointment',
   trained_detailer: 'Trained Detailers',
   trainer_detailer_description:
@@ -30,3 +30,5 @@ export default {
     'You could message the booking form to our Whatsapp Number directly',
   send_whatsapp: 'Send WhatsApp',
 };
+
+export default en;

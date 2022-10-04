@@ -1,4 +1,4 @@
-export default {
+const id = {
   book: 'Buat Janji',
   trained_detailer: 'Detailer Terlatih',
   trainer_detailer_description:
@@ -30,3 +30,5 @@ export default {
     'Kamu bisa kirim booking form langsung ke WhatsApp kami',
   send_whatsapp: 'Kirim WhatsApp',
 };
+
+export default id;
