@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { DetailingServiceType } from 'types/detailing';
 import Button from './Button';
-import DetailingModal from './DetailingModal';
+import { DetailingModal } from './DetailingModal';
 
 interface HeroProps {
   detailingServices: DetailingServiceType[];

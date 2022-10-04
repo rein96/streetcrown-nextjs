@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import emailjs from 'emailjs-com';
 import { getTodayDate } from 'utils';
-import Button from './Button';
-import Modal, { ModalProps } from './Modal';
+import Button from '../Button';
+import Modal, { ModalProps } from '../Modal';
 import { useRouter } from 'next/router';
 import {
   JAKARTA_WHATSAPP_NUMBER,

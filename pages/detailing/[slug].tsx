@@ -1,5 +1,4 @@
 import Button from 'components/Button';
-import DetailingModal from 'components/DetailingModal';
 import Layout from 'components/Layout/Layout';
 import Meta from 'components/Meta';
 import { SITE_URL } from 'constants/common';
@@ -13,6 +12,7 @@ import Image from 'next/image';
 import { ParsedUrlQuery } from 'querystring';
 import React, { useState } from 'react';
 import { contentfulClient } from 'lib/contentful';
+import { DetailingModal } from 'components/DetailingModal';
 
 interface DetailingPageParams extends ParsedUrlQuery {
   slug: string;
