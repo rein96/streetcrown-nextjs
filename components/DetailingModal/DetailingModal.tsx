@@ -12,6 +12,7 @@ import PaperPlane from './components/PaperPlane';
 import Steps from './components/Steps';
 import { en, id } from 'locales';
 import DetailContent from './components/DetailContent';
+import ServiceContent from './components/ServiceContent';
 interface DetailingModalProps extends ModalProps {
   detailingServices: DetailingServiceType[];
   defaultDetailingService?: string; // ex: 'Nano Ceramic Coating'
@@ -185,35 +186,6 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
     );
   };
 
-  /** Render Service Element */
-  const ServiceElement: React.FC = () => {
-    const services = ['Workshop', 'Pickup & Delivery'];
-    return (
-      <div className='service-element mt-8 p-4 flex justify-center animation-fadeIn'>
-        <div className='flex flex-col'>
-          <p className='text-white text-xl mb-6'>
-            {translate.detailing_my_auto}:
-          </p>
-          {services.map((service) => {
-            const isLocationSelected =
-              service.toLowerCase() === serviceType?.toLowerCase();
-
-            return (
-              <Button
-                key={service}
-                className={`${isLocationSelected ? 'bg-green' : 'bg-red'} mb-6`}
-                data-service={service.toLowerCase()}
-                onClick={handleServiceType}
-              >
-                {service}
-              </Button>
-            );
-          })}
-        </div>
-      </div>
-    );
-  };
-
   /** Back or Secondary button config */
   const secondaryButtonConfig = () => {
     // First step will not show Back button
@@ -367,7 +339,12 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
           setCurrentStep={setCurrentStep}
         />
         {currentStep === 1 && <LocationElement />}
-        {currentStep === 2 && <ServiceElement />}
+        {currentStep === 2 && (
+          <ServiceContent
+            serviceType={serviceType}
+            handleServiceType={handleServiceType}
+          />
+        )}
         {currentStep === 3 && (
           <DetailContent
             handleFormDetail={handleFormDetail}
