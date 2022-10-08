@@ -2,15 +2,54 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { LanguageOptions, MobileMenu, StreetCrownLogo } from './components';
 import { navItems } from './Layout.constant';
-interface HeaderProps {
-  scrollDirection: 'up' | 'down';
+
+function debounce(func: Function, wait: number, immediate?: boolean) {
+  let timeout;
+  return function () {
+    // const context = this;
+    const context = window;
+    // const args = arguments;
+    const later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context);
+    };
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context);
+  };
 }
 
 /** Reusable Header / Navbar */
-const Header: React.FC<HeaderProps> = ({ scrollDirection }) => {
+const Header: React.FC = () => {
   const [showNavbar, setShowNavbar] = useState<boolean>(true);
 
+  const [y, setY] = useState(0);
+
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
+
   const webUrl = process.env.NEXT_PUBLIC_URL;
+
+  const handleNavigation = debounce(() => {
+    /** Less than 100px -> set behaviour scroll to up -> show navbar */
+    const scrollAroundTopLayout: boolean = y <= 100;
+
+    if (y > window.scrollY || scrollAroundTopLayout) {
+      // Scrolling up
+      setScrollDirection('up');
+    } else if (y < window.scrollY) {
+      // Scrolling down
+      setScrollDirection('down');
+    }
+    setY(window.scrollY);
+  }, 100);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleNavigation);
+    return () => {
+      window.removeEventListener('scroll', handleNavigation);
+    };
+  }, [handleNavigation, y, scrollDirection]);
 
   useEffect(() => {
     if (scrollDirection === 'down') {
