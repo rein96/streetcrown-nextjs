@@ -1,4 +1,4 @@
-import Button from 'components/Button';
+import React from 'react';
 import Layout from 'components/Layout/Layout';
 import Meta from 'components/Meta';
 import { SITE_URL } from 'constants/common';
@@ -8,15 +8,15 @@ import {
   LocaleType,
 } from 'types/detailing';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Image from 'next/image';
 import { ParsedUrlQuery } from 'querystring';
-import React from 'react';
 import { contentfulClient } from 'lib/contentful';
 import { DetailingModal } from 'components/DetailingModal';
 import { useRouter } from 'next/router';
-import ContactUs from 'features/detailing/components/ContactUs';
-import DetailingContent from 'features/detailing/components/DetailingContent';
-import DetailingHeader from 'features/detailing/components/DetailingHeader';
+import {
+  ContactUs,
+  DetailingContent,
+  DetailingHeader,
+} from 'features/detailing/components';
 
 interface DetailingPageParams extends ParsedUrlQuery {
   slug: string;
