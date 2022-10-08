@@ -1,4 +1,5 @@
 module.exports = {
+  /**  @see https://stackoverflow.com/questions/66484296/some-tailwind-styles-not-working-in-production-with-next-js */
   purge: [
     './components/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
