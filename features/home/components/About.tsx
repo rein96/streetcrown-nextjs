@@ -77,10 +77,12 @@ const About: React.FC = () => {
             <div className='w-full flex-1'>
               <iframe
                 style={{ width: '100%', height: 400 }}
-                // width='560'
-                // height='315'
-                src='https://www.youtube.com/embed/nfq8PB0_dwY'
-                title='YouTube video player'
+                src='https://www.youtube.com/embed/nfq8PB0_dwY&autoplay=1'
+                /**
+                 * Lazyload embedded youtube videos
+                 * @see https://css-tricks.com/lazy-load-embedded-youtube-videos/ */
+                srcDoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/nfq8PB0_dwY><img src=https://i.ytimg.com/vi_webp/nfq8PB0_dwY/maxresdefault.webp alt='Video The Dark Knight Rises: What Went Wrong? – Wisecrack Edition'><span>▶</span></a>"
+                title='StreetCrown Autodetailing Diamond & Nano Ceramic Coating | Youtube'
                 frameBorder='0'
                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                 allowFullScreen
