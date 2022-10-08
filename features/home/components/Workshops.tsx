@@ -6,13 +6,19 @@ import {
 import SectionTitle from 'components/SectionTitle';
 import Modal from 'components/Modal';
 import Loading from 'components/Loading';
+import { useRouter } from 'next/router';
 
-type LocationMapsType = 'Jakarta' | 'Bandung' | string | null;
+type LocationMapsType = 'Jakarta' | 'Bandung';
 
 const Workshops: React.FC = () => {
-  const [locationMaps, setLocationMaps] = useState<LocationMapsType>(null);
+  const router = useRouter();
+  const { pathname, query } = router;
 
   const [iframeLoading, setIframeLoading] = useState(true);
+
+  const workshopModalVisible = router.query?.modal === 'workshop';
+
+  const locationMaps = router.query?.location;
 
   const locationGoogleMapsUrl =
     locationMaps === 'Jakarta'
@@ -22,13 +28,25 @@ const Workshops: React.FC = () => {
   const handleShowMaps = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
-    const location = event.currentTarget.dataset.location;
+    const location = event.currentTarget.dataset.location as LocationMapsType;
 
-    setLocationMaps(location);
+    router.query.modal = 'workshop';
+    router.query.location = location;
+
+    router.push(
+      {
+        pathname: pathname,
+        query: { ...query },
+      },
+      undefined,
+      { scroll: false, shallow: true }
+    );
   };
 
   const handleCloseMaps = () => {
-    setLocationMaps(null);
+    delete router.query.modal;
+    delete router.query.location;
+    router.replace({ pathname, query }, undefined, { shallow: true });
   };
 
   const handleLoadIframe = () => {
@@ -70,7 +88,7 @@ const Workshops: React.FC = () => {
       </section>
 
       <Modal
-        visible={!!locationMaps}
+        visible={workshopModalVisible}
         onClose={handleCloseMaps}
         title={`StreetCrown | ${locationMaps}`}
         bodyClassName={'h-full'}
