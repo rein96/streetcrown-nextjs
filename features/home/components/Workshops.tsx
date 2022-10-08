@@ -5,11 +5,14 @@ import {
 } from 'constants/common';
 import SectionTitle from 'components/SectionTitle';
 import Modal from 'components/Modal';
+import Loading from 'components/Loading';
 
 type LocationMapsType = 'Jakarta' | 'Bandung' | string | null;
 
 const Workshops: React.FC = () => {
   const [locationMaps, setLocationMaps] = useState<LocationMapsType>(null);
+
+  const [iframeLoading, setIframeLoading] = useState(true);
 
   const locationGoogleMapsUrl =
     locationMaps === 'Jakarta'
@@ -26,6 +29,10 @@ const Workshops: React.FC = () => {
 
   const handleCloseMaps = () => {
     setLocationMaps(null);
+  };
+
+  const handleLoadIframe = () => {
+    setIframeLoading(false);
   };
 
   return (
@@ -68,15 +75,27 @@ const Workshops: React.FC = () => {
         title={`StreetCrown | ${locationMaps}`}
         bodyClassName={'h-full'}
       >
-        <iframe
-          className='w-full'
-          src={locationGoogleMapsUrl}
-          width='600'
-          height='450'
-          style={{ border: 0 }}
-          allowFullScreen={true}
-          loading='lazy'
-        />
+        <div
+          style={{ minHeight: 300 }}
+          className='flex items-center justify-center flex-col'
+        >
+          {iframeLoading && (
+            <div className='flex items-center justify-center'>
+              <Loading size={64} borderSize={8} />
+            </div>
+          )}
+
+          <iframe
+            className='w-full'
+            src={locationGoogleMapsUrl}
+            width='600'
+            height='450'
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading='lazy'
+            onLoad={handleLoadIframe}
+          />
+        </div>
       </Modal>
       <style jsx>{`
         .workshop-item {
