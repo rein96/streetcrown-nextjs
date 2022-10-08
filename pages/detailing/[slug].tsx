@@ -15,7 +15,7 @@ import { contentfulClient } from 'lib/contentful';
 import { DetailingModal } from 'components/DetailingModal';
 import { useRouter } from 'next/router';
 import ContactUs from 'features/detailing/components/ContactUs';
-import DetailingImages from 'features/detailing/components/DetailingImages';
+import DetailingContent from 'features/detailing/components/DetailingContent';
 
 interface DetailingPageParams extends ParsedUrlQuery {
   slug: string;
@@ -142,32 +142,11 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
         </div>
       </div>
 
-      <div className='flex justify-center'>
-        <div className='container p-4 py-10'>
-          {/* Description */}
-          <p className='text-white whitespace-pre-line'>{description}</p>
-
-          {/* Images section */}
-          <div className='images-section'>
-            {/* Text */}
-            <div className='flex my-8'>
-              <div className='left-red-line' />
-              <h2 className='text-xl font-medium text-white ml-2'>
-                Our work for{' '}
-                <span className='text-red'>Nano Ceramic coating</span>
-              </h2>
-            </div>
-
-            {/* Images */}
-            <DetailingImages images={images} />
-          </div>
-
-          {/* Button */}
-          {/* <div className='flex justify-center mt-6'>
-            <Button className='py-2'>Load More</Button>
-          </div> */}
-        </div>
-      </div>
+      <DetailingContent
+        detailingName={name}
+        description={description}
+        images={images}
+      />
 
       {/* Contact Us Banner */}
       <ContactUs detailingName={name} />
