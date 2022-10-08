@@ -14,6 +14,7 @@ import React from 'react';
 import { contentfulClient } from 'lib/contentful';
 import { DetailingModal } from 'components/DetailingModal';
 import { useRouter } from 'next/router';
+import ContactUs from 'features/detailing/components/ContactUs';
 
 interface DetailingPageParams extends ParsedUrlQuery {
   slug: string;
@@ -108,19 +109,6 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
 
   const defaultDetailingService = detailingService.fields.name;
 
-  const handleShowModal = () => {
-    router.query.modal = 'detailing';
-
-    router.push(
-      {
-        pathname: pathname,
-        query: { ...query },
-      },
-      undefined,
-      { scroll: false, shallow: true }
-    );
-  };
-
   const handleCloseModal = () => {
     delete router.query.modal;
     router.replace({ pathname, query }, undefined, { shallow: true });
@@ -192,22 +180,7 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
       </div>
 
       {/* Contact Us Banner */}
-      <div
-        className='w-full overflow-hidden relative mb-8'
-        style={{ height: '40vh' }}
-      >
-        <div className='contact-banner-content flex flex-col absolute z-10 w-full text-center'>
-          <h4 className='text-xl font-medium text-white'>
-            Contact Us for <span className='text-red'>{name}</span>
-          </h4>
-          <div className='flex justify-center mt-4'>
-            <Button className='py-2' onClick={handleShowModal}>
-              Contact Us
-            </Button>
-          </div>
-        </div>
-        <Image layout='fill' objectFit='cover' src='/assets/dark-benz.jpg' />
-      </div>
+      <ContactUs detailingName={name} />
 
       <DetailingModal
         visible={detailingModalVisible}
@@ -221,12 +194,6 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
         .left-red-line {
           width: 12px;
           background-color: var(--red-ds);
-        }
-
-        .contact-banner-content {
-          top: 50%;
-          left: 50%;
-          transform: translate3d(-50%, -50%, 0);
         }
       `}</style>
     </Layout>
