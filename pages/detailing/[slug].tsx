@@ -16,6 +16,7 @@ import { DetailingModal } from 'components/DetailingModal';
 import { useRouter } from 'next/router';
 import ContactUs from 'features/detailing/components/ContactUs';
 import DetailingContent from 'features/detailing/components/DetailingContent';
+import DetailingHeader from 'features/detailing/components/DetailingHeader';
 
 interface DetailingPageParams extends ParsedUrlQuery {
   slug: string;
@@ -124,23 +125,8 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
         canonicalUrl={`${SITE_URL}/detailing/${slug}`}
         ogUrl={`${SITE_URL}/detailing/${slug}`}
       />
-      <div className='detailing-page-container'>
-        {/* Banner Image */}
-        <div
-          className='w-full overflow-hidden relative'
-          style={{ height: '30vh' }}
-        >
-          <Image
-            layout='fill'
-            objectFit='cover'
-            src='/assets/detailing-banner.jpg'
-          />
-          <div className='flex absolute bottom-10 left-10'>
-            <div className='left-red-line' />
-            <h2 className='text-3xl font-medium text-white ml-2'>{name}</h2>
-          </div>
-        </div>
-      </div>
+      {/* Banner Image */}
+      <DetailingHeader detailingName={name} />
 
       <DetailingContent
         detailingName={name}
@@ -157,14 +143,6 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
         detailingServices={detailingServices}
         defaultDetailingService={defaultDetailingService}
       />
-
-      {/* CSS */}
-      <style jsx>{`
-        .left-red-line {
-          width: 12px;
-          background-color: var(--red-ds);
-        }
-      `}</style>
     </Layout>
   );
 };
