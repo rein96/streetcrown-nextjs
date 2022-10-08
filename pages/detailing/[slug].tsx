@@ -15,6 +15,7 @@ import { contentfulClient } from 'lib/contentful';
 import { DetailingModal } from 'components/DetailingModal';
 import { useRouter } from 'next/router';
 import ContactUs from 'features/detailing/components/ContactUs';
+import DetailingImages from 'features/detailing/components/DetailingImages';
 
 interface DetailingPageParams extends ParsedUrlQuery {
   slug: string;
@@ -158,18 +159,7 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
             </div>
 
             {/* Images */}
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
-              {images?.map((image: any, index: number) => {
-                return (
-                  <Image
-                    key={index}
-                    src={'https:' + image.fields.file.url}
-                    width={image.fields.file.details.image.width}
-                    height={image.fields.file.details.image.height}
-                  />
-                );
-              })}
-            </div>
+            <DetailingImages images={images} />
           </div>
 
           {/* Button */}

@@ -10,35 +10,68 @@ export interface DetailingServiceType {
 
 export interface DetailingFieldsType {
   description: string;
-  images: ImageType[];
+  images: ImageInterface[];
   name: string;
   slug: string;
   subtitle: string;
   thumbnail: ThumbnailType;
 }
 
-export interface ImageType {
-  fields: {
-    file: {
-      url: string;
-      details: {
-        size: number;
-        image: {
-          width: number;
-          height: number;
-        };
-      };
-      fileName: string;
-      contentType: string;
-    };
-    title: string;
-  };
-  metadata: {
-    tags: any[];
-  };
-  sys: any;
+// ImageInterface START
+export interface ImageInterface {
+  metadata: Metadata;
+  sys: ImageSys;
+  fields: Fields;
 }
 
+export interface Fields {
+  title: string;
+  file: File;
+}
+
+export interface File {
+  url: string;
+  details: Details;
+  fileName: string;
+  contentType: string;
+}
+
+export interface Details {
+  size: number;
+  image: ImageClass;
+}
+
+export interface ImageClass {
+  width: number;
+  height: number;
+}
+
+export interface Metadata {
+  tags: any[];
+}
+
+export interface ImageSys {
+  space: Environment;
+  id: string;
+  type: string;
+  createdAt: Date;
+  updatedAt: Date;
+  environment: Environment;
+  revision: number;
+  locale: string;
+}
+
+export interface Environment {
+  sys: EnvironmentSys;
+}
+
+export interface EnvironmentSys {
+  id: string;
+  type: string;
+  linkType: string;
+}
+
+// ImageInterface END
 export interface ThumbnailType {
   metadata: {
     tags: any;
