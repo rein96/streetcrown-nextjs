@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import emailjs from 'emailjs-com';
-import Button from '../Button';
 import Modal, { ModalProps } from '../Modal';
-import { useRouter } from 'next/router';
 import { DetailingServiceType } from 'types/detailing';
-import PaperPlane from './components/PaperPlane';
 import Steps from './components/Steps';
-import { en, id } from 'locales';
 import DetailContent from './components/DetailContent';
 import ServiceContent from './components/ServiceContent';
 import LocationContent from './components/LocationContent';
@@ -41,10 +37,6 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   detailingServices,
   defaultDetailingService,
 }) => {
-  const { locale } = useRouter();
-
-  const translate = locale === 'en' ? en : id;
-
   /** Current Step  */
   const [currentStep, setCurrentStep] = useState<StepType>(1);
 
