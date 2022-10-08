@@ -3,8 +3,8 @@ import id from 'locales/id';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { DetailingServiceType } from 'types/detailing';
-import Button from './Button';
-import { DetailingModal } from './DetailingModal';
+import Button from '../../../components/Button';
+import { DetailingModal } from '../../../components/DetailingModal';
 
 interface HeroProps {
   detailingServices: DetailingServiceType[];

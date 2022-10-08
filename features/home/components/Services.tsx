@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { DetailingServiceType } from 'types/detailing';
-import Button from './Button';
-import SectionTitle from './SectionTitle';
+import Button from '../../../components/Button';
+import SectionTitle from '../../../components/SectionTitle';
 
 interface ServicesProps {
   detailingServices: DetailingServiceType[];

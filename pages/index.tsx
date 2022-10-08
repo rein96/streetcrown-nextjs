@@ -1,10 +1,12 @@
-import About from 'components/About';
-import Hero from 'components/Hero';
 import Layout from 'components/Layout/Layout';
 import Meta from 'components/Meta';
-import Services from 'components/Services';
-import WhyChooseUs from 'components/WhyChooseUs';
-import Location from 'components/Workshops';
+import {
+  About,
+  Hero,
+  Services,
+  WhyChooseUs,
+  Workshops,
+} from 'features/home/components';
 import { contentfulClient } from 'lib/contentful';
 import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
@@ -45,7 +47,7 @@ const HomePage: NextPage<HomePageProps> = ({ detailingServices }) => {
       <About />
       <WhyChooseUs />
       <BeforeAfter />
-      <Location />
+      <Workshops />
     </Layout>
   );
 };

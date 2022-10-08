@@ -1,8 +1,8 @@
+import SectionTitle from 'components/SectionTitle';
 import en from 'locales/en';
 import id from 'locales/id';
 import { useRouter } from 'next/router';
 import React from 'react';
-import SectionTitle from './SectionTitle';
 
 const WhyChooseUs = () => {
   const router = useRouter();

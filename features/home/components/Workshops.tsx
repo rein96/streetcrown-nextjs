@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Modal from './Modal';
-import SectionTitle from './SectionTitle';
 import {
   jakartaGoogleMapsLocationUrl,
   bandungGoogleMapsLocationUrl,
 } from 'constants/common';
+import SectionTitle from 'components/SectionTitle';
+import Modal from 'components/Modal';
 
 type LocationMapsType = 'Jakarta' | 'Bandung' | string | null;
 
