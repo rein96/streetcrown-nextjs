@@ -14,9 +14,12 @@ import React from 'react';
 import { DetailingServiceType } from 'types/detailing';
 
 /** Dynamic import to prevent getting error of 'window' in build time */
-const BeforeAfter = dynamic(() => import('components/BeforeAfter'), {
-  ssr: false,
-});
+const BeforeAfter = dynamic(
+  () => import('features/home/components/BeforeAfter'),
+  {
+    ssr: false,
+  }
+);
 
 interface HomePageProps {
   detailingServices: DetailingServiceType[];

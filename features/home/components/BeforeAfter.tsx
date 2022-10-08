@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import BeerSlider from 'beerslider';
-import SectionTitle from './SectionTitle';
+import SectionTitle from 'components/SectionTitle';
 
 function BeforeAfter() {
   useEffect(() => {
