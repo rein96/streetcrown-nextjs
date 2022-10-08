@@ -9,7 +9,7 @@ const StreetCrownLogo = React.forwardRef<HTMLAnchorElement>((props, ref) => {
       <Image
         alt='Logo'
         className='w-24 md:w-32'
-        src='/assets/streetcrown-logo-transparent.svg'
+        src='/assets/streetcrown-logo-transparent.png'
         width={100}
         height={height}
       />
