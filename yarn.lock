@@ -474,13 +474,6 @@ balanced-match@^1.0.0:
   resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
-beerslider@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/beerslider/-/beerslider-1.0.3.tgz#5b671d625847c84b0e48225a219e84cb841158b8"
-  integrity sha512-1XsuTxbspcAR1rxKOJa3qYX3XW9Kf6d+QRUJtDSxsj+yLVSoBRK8ThqpgxhGaxFeBKklrCc0v0UWpifACT7Dbw==
-  dependencies:
-    core-js "^3.0.0-beta.3"
-
 binary-extensions@^2.0.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.2.0.tgz"
@@ -659,11 +652,6 @@ core-js-pure@^3.19.0:
   version "3.20.1"
   resolved "https://registry.npmjs.org/core-js-pure/-/core-js-pure-3.20.1.tgz"
   integrity sha512-yeNNr3L9cEBwNy6vhhIJ0nko7fE7uFO6PgawcacGt2VWep4WqQx0RiqlkgSP7kqUMC1IKdfO9qPeWXcUheHLVQ==
-
-core-js@^3.0.0-beta.3:
-  version "3.20.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.1.tgz#eb1598047b7813572f1dc24b7c6a95528c99eef3"
-  integrity sha512-btdpStYFQScnNVQ5slVcr858KP0YWYjV16eGJQw8Gg7CWtu/2qNvIM3qVRIR3n1pK2R9NNOrTevbvAYxajwEjg==
 
 cosmiconfig@^7.0.1:
   version "7.0.1"
@@ -1957,6 +1945,11 @@ quick-lru@^5.1.1:
   version "5.1.1"
   resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
+
+react-before-after-slider-component@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-before-after-slider-component/-/react-before-after-slider-component-1.1.5.tgz#affef71923b43b6147072b5ff3cc0f5fbcd30362"
+  integrity sha512-I687klUpBNkn8RPqqyrErtlMf+epAQqzEQD+YZMpGTNKwEXb+CcIadFHGvZpoo5soEUDyXFH6ubdDSMlYtYCbA==
 
 react-dom@17.0.2:
   version "17.0.2"

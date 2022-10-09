@@ -9,12 +9,12 @@
     "preview": "yarn run build && yarn run start"
   },
   "dependencies": {
-    "beerslider": "^1.0.3",
     "classnames": "^2.3.2",
     "contentful": "^9.1.5",
     "emailjs-com": "^3.2.0",
     "next": "^12.3.1",
     "react": "17.0.2",
+    "react-before-after-slider-component": "^1.1.5",
     "react-dom": "17.0.2",
     "react-slick": "^0.28.1",
     "sass": "^1.45.2",
