@@ -5,7 +5,7 @@ import HamburgerMenu from './HamburgerMenu';
 import LanguageOptions from './LanguageOptions';
 import StreetCrownLogo from './StreetCrownLogo';
 
-function MobileMenu() {
+function MobileMenu({ handleShowSnackbar }) {
   const webUrl = process.env.NEXT_PUBLIC_URL;
 
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
@@ -60,7 +60,10 @@ function MobileMenu() {
                 );
               })}
               {/* Dropdown of languages */}
-              <LanguageOptions onClick={handleCloseMobileMenu} />
+              <LanguageOptions
+                handleShowSnackbar={handleShowSnackbar}
+                onClick={handleCloseMobileMenu}
+              />
             </ul>
           </div>
         </div>
