@@ -2,10 +2,10 @@
 export const SITE_URL = 'https://www.streetcrown.id';
 
 /** Jakarta WhatsApp Number */
-export const JAKARTA_WHATSAPP_NUMBER = '628999993164';
+export const JAKARTA_WHATSAPP_NUMBER = '6281288704003';
 
 /** Bandung WhatsApp Number */
-export const BANDUNG_WHATSAPP_NUMBER = '628999993164';
+export const BANDUNG_WHATSAPP_NUMBER = '6285108366633';
 
 /** Jakarta Google Maps Url */
 export const jakartaGoogleMapsLocationUrl =

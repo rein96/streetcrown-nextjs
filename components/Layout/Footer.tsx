@@ -1,5 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
+import {
+  BANDUNG_WHATSAPP_NUMBER,
+  JAKARTA_WHATSAPP_NUMBER,
+} from 'constants/common';
 
 function Footer() {
   return (
@@ -17,7 +21,7 @@ function Footer() {
           <div className='sub-footer-container px-6 py-6'>
             <h4 className='footer-header-text border-b border-grey'>JAKARTA</h4>
             <a
-              href='https://api.whatsapp.com/send?phone=628999993164&text=Halo%20StreetCrown!'
+              href={`https://api.whatsapp.com/send?phone=${JAKARTA_WHATSAPP_NUMBER}&text=Halo%20streetcrown.id!`}
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -68,7 +72,7 @@ function Footer() {
           <div className='sub-footer-container px-6 py-6'>
             <h4 className='footer-header-text border-b border-grey'>BANDUNG</h4>
             <a
-              href='https://api.whatsapp.com/send?phone=628999993164&text=Halo%20StreetCrown!'
+              href={`https://api.whatsapp.com/send?phone=${BANDUNG_WHATSAPP_NUMBER}&text=Halo%20streetcrown.id!`}
               target='_blank'
               rel='noopener noreferrer'
             >
