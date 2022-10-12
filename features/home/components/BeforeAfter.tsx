@@ -6,18 +6,22 @@ import 'react-before-after-slider-component/dist/build.css';
 const BeforeAfter = () => {
   const EXTERIOR_BEFORE = {
     imageUrl: '/assets/close-before.jpg',
+    alt: 'before detailing',
   };
 
   const EXTERIOR_AFTER = {
     imageUrl: '/assets/close-after.jpg',
+    alt: 'after detailing',
   };
 
   const LOGO_BEFORE = {
     imageUrl: '/assets/logo-before.jpg',
+    alt: 'before detailing',
   };
 
   const LOGO_AFTER = {
     imageUrl: '/assets/logo-after.jpg',
+    alt: 'after detailing',
   };
 
   const delimiterIconStyles = {
