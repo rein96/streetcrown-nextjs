@@ -1,6 +1,7 @@
 {
   "name": "streetcrown-nextjs",
   "private": true,
+  "version": "0.5.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,6 +10,7 @@
     "preview": "yarn run build && yarn run start"
   },
   "dependencies": {
+    "@sentry/nextjs": "^7.15.0",
     "classnames": "^2.3.2",
     "contentful": "^9.1.5",
     "emailjs-com": "^3.2.0",

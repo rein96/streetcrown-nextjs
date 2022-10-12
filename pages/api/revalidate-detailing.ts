@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
+import { withSentry } from '@sentry/nextjs';
 interface ResponseData {
   revalidated?: boolean;
   error?: string;
@@ -7,10 +7,10 @@ interface ResponseData {
   slugToRevalidate?: string;
 }
 
-export default async function handler(
+const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
-) {
+) => {
   // check for the POST request
   if (req.method !== 'POST') {
     return res
@@ -44,4 +44,6 @@ export default async function handler(
     // to show the last successfully generated page
     return res.status(500).send({ error: 'Error revalidating' });
   }
-}
+};
+
+export default withSentry(handler);
