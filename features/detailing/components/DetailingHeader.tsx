@@ -17,6 +17,7 @@ const DetailingHeader = (props: DetailingHeaderProps) => {
           layout='fill'
           objectFit='cover'
           src='/assets/detailing-banner.jpg'
+          alt='detailing'
         />
         <div className='flex absolute bottom-10 left-10'>
           <div className='left-red-line' />

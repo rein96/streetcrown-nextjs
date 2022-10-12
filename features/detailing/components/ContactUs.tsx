@@ -41,7 +41,12 @@ const ContactUs: React.FC<ContactUsProps> = ({ detailingName }) => {
             </Button>
           </div>
         </div>
-        <Image layout='fill' objectFit='cover' src='/assets/dark-benz.jpg' />
+        <Image
+          layout='fill'
+          objectFit='cover'
+          src='/assets/dark-benz.jpg'
+          alt='dark sedan'
+        />
       </div>
 
       {/* CSS */}
