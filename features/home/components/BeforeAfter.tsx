@@ -5,22 +5,22 @@ import 'react-before-after-slider-component/dist/build.css';
 
 const BeforeAfter = () => {
   const EXTERIOR_BEFORE = {
-    imageUrl: '/assets/close-before.jpg',
+    imageUrl: '/assets/before-after/close-before.webp',
     alt: 'before detailing',
   };
 
   const EXTERIOR_AFTER = {
-    imageUrl: '/assets/close-after.jpg',
+    imageUrl: '/assets/before-after/close-after.webp',
     alt: 'after detailing',
   };
 
   const LOGO_BEFORE = {
-    imageUrl: '/assets/logo-before.jpg',
+    imageUrl: '/assets/before-after/logo-before.webp',
     alt: 'before detailing',
   };
 
   const LOGO_AFTER = {
-    imageUrl: '/assets/logo-after.jpg',
+    imageUrl: '/assets/before-after/logo-after.webp',
     alt: 'after detailing',
   };
 

@@ -103,7 +103,7 @@ const About: React.FC = () => {
                         alt={image}
                       /> */}
                       <img
-                        src={`/assets/portfolio/${image}.jpg`}
+                        src={`/assets/portfolio/webp/${image}.webp`}
                         width='400'
                         height='400'
                         alt={image}
