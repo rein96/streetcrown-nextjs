@@ -134,10 +134,6 @@ function Footer() {
         .icon-container {
           max-height: 52px;
         }
-
-        .footer-icon {
-          width: 28px;
-        }
       `}</style>
     </>
   );
