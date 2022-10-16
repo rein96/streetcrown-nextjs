@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Main />
-          <div id='snackbar-portal' />
+          <div id='streetcrown-portal' />
           <NextScript />
         </body>
       </Html>

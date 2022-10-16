@@ -15,7 +15,7 @@ const Portal = ({ children }) => {
   if (!mounted) return null;
 
   // mounted = true
-  return createPortal(children, document.querySelector('#snackbar-portal'));
+  return createPortal(children, document.querySelector('#streetcrown-portal'));
 };
 
 export default Portal;

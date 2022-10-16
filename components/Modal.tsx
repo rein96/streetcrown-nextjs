@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Portal from './Portal';
 
 type ModalButtonType = {
   text: string;
@@ -55,7 +56,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <>
       {visible ? (
-        <>
+        <Portal>
           <div
             onClick={handleOnCloseWithAnimation}
             className={`modal bg-black bg-opacity-40 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none`}
@@ -127,7 +128,7 @@ const Modal: React.FC<ModalProps> = ({
             </div>
           </div>
           <div className='opacity-25 fixed inset-0 z-40 bg-black'></div>
-        </>
+        </Portal>
       ) : null}
 
       <style jsx>{`
