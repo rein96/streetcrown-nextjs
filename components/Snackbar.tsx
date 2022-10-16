@@ -33,7 +33,6 @@ const Snackbar = ({ visible, text }: SnackbarProps) => {
           color: white;
           padding: 16px;
           transition: 0.5s;
-          // To centering
           text-align: center;
           min-width: 200px;
         }
