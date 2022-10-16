@@ -166,7 +166,7 @@ const DetailingModal: React.FC<DetailingModalProps> = ({
   /** Handle Submit To EmailJS */
   const handleBookButton = () => {
     // Disabled state
-    if (isBookedButtonDisabled) return console.log('Disableddddd');
+    if (isBookedButtonDisabled) return;
 
     const data = {
       from_name: formFields.name,
