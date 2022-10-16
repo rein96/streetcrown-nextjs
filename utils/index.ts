@@ -6,7 +6,7 @@ export const getTodayDate = (): string => {
   const today = new Date();
   let dd: number | string = today.getDate();
   let mm: number | string = today.getMonth() + 1; // January is 0 index | getMonth = 0-11 index
-  let yyyy = today.getFullYear();
+  const yyyy = today.getFullYear();
   // Desired output : min = "2022-01-23"
   // console.log(`${yyyy}-${mm}-${dd}`)  // Problem : "2022-8-21"
 
