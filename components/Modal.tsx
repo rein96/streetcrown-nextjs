@@ -72,7 +72,7 @@ const Modal: React.FC<ModalProps> = ({
               >
                 {/* header */}
                 <div
-                  className={`flex items-start justify-between p-5 border-solid ${
+                  className={`flex items-center justify-between p-5 border-solid ${
                     withBorder ? 'border-b' : ''
                   } border-red rounded-t`}
                 >
