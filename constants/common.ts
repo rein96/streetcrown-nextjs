@@ -7,6 +7,9 @@ export const JAKARTA_WHATSAPP_NUMBER = '6281288704003';
 /** Bandung WhatsApp Number */
 export const BANDUNG_WHATSAPP_NUMBER = '6285108366633';
 
+/** Workshop Locations */
+export const LOCATIONS = ['Jakarta', 'Bandung'];
+
 /** Jakarta Google Maps Url */
 export const jakartaGoogleMapsLocationUrl =
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7974043578324!2d106.8736580144479!3d-6.157882695541657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f527a8d55b77%3A0x7f8b65aa8a24f26f!2sStreetcrown%20Auto%20Detailing!5e0!3m2!1sen!2sid!4v1643432789901!5m2!1sen!2sid';

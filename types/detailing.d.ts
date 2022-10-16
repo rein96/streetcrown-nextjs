@@ -1,5 +1,7 @@
 type LocaleType = 'en' | 'id';
 
+type WorkshopLocationType = 'Jakarta' | 'Bandung';
+
 export interface DetailingServiceType {
   fields: DetailingFieldsType;
   metadata: {

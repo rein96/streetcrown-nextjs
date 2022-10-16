@@ -1,4 +1,5 @@
 import React from 'react';
+import WhatsappButton from './components/WhatsappButton';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -13,6 +14,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Header />
       <div className='layout-container'>{children}</div>
       <Footer />
+
+      <WhatsappButton />
 
       {/* CSS */}
       <style jsx>{`
