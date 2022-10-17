@@ -1,7 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import {
+  BANDUNG_INSTAGRAM,
   BANDUNG_WHATSAPP_NUMBER,
+  JAKARTA_INSTAGRAM,
   JAKARTA_WHATSAPP_NUMBER,
 } from 'constants/common';
 
@@ -36,7 +38,7 @@ function Footer() {
               </div>
             </a>
             <a
-              href='https://www.instagram.com/streetcrown.autodetailing/'
+              href={`https://www.instagram.com/${JAKARTA_INSTAGRAM}`}
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -47,7 +49,7 @@ function Footer() {
                   width={28}
                   height={28}
                 />
-                <span className='ml-4 text-sm'>streetcrown.detailing</span>
+                <span className='ml-4 text-sm'>{JAKARTA_INSTAGRAM}</span>
               </div>
             </a>
             <a
@@ -64,7 +66,7 @@ function Footer() {
                 />
                 <span className='ml-4 text-sm'>
                   {' '}
-                  Jl. Sunter Pulo Kecil No.18, Jakarta Utara
+                  Jl. Sunter Pulo Kecil Blok X3/18, Jakarta Utara
                 </span>
               </div>
             </a>
@@ -87,7 +89,7 @@ function Footer() {
               </div>
             </a>
             <a
-              href='https://www.instagram.com/streetcrown'
+              href={`https://www.instagram.com/${BANDUNG_INSTAGRAM}`}
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -98,11 +100,11 @@ function Footer() {
                   width={28}
                   height={28}
                 />
-                <span className='ml-4 text-sm'>streetcrown</span>
+                <span className='ml-4 text-sm'>{BANDUNG_INSTAGRAM}</span>
               </div>
             </a>
             <a
-              href='https://goo.gl/maps/83hKMY7hHr11ASHB8'
+              href='https://g.page/StreetCrown?share'
               target='_blank'
               rel='noopener noreferrer'
             >
@@ -114,7 +116,7 @@ function Footer() {
                   height={28}
                 />
                 <span className='ml-4 text-sm'>
-                  Jl. Taman Kopo Indah No.10, Bandung
+                  Cluster Greenville 1 no.17, Taman Kopo Indah 1, Bandung
                 </span>
               </div>
             </a>
