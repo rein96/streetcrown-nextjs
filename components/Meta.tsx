@@ -36,8 +36,8 @@ const Meta: React.FC<MetaProps> = ({
   ogImage = ogImage != null ? ogImage : '/streetcrown-square-logo.jpg';
   return (
     <Head>
-      <title>{title}</title>
       <meta charSet='UTF-8' />
+      <title>{title}</title>
       <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       <meta name='keywords' content={keywords} key='metakeywords' />
       <link rel='icon' href={icon} key='metaicon' />
@@ -60,7 +60,8 @@ const Meta: React.FC<MetaProps> = ({
       <meta property='og:site_name' content={ogSiteName} key='ogsitename' />
       <meta
         property='og:image'
-        content={`${SITE_URL}${ogImage}`}
+        // content={`${SITE_URL}${ogImage}`}
+        content='/assets/streetcrown-square-logo.png'
         key='ogimage'
       />
       <meta name='twitter:card' content='summary' />
