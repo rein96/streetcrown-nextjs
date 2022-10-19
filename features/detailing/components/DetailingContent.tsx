@@ -16,18 +16,7 @@ const DetailingContent = (props: DetailingContentProps) => {
         <p className='text-white whitespace-pre-line'>{description}</p>
 
         {/* Images section */}
-        <div className='images-section'>
-          {/* Text */}
-          <div className='flex my-8'>
-            <div className='left-red-line' />
-            <h2 className='text-xl font-medium text-white ml-2'>
-              Our work for <span className='text-red'>{detailingName}</span>
-            </h2>
-          </div>
-
-          {/* Images */}
-          <DetailingImages images={images} />
-        </div>
+        <DetailingImages images={images} detailingName={detailingName} />
       </div>
     </div>
   );
