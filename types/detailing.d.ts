@@ -17,6 +17,7 @@ export interface DetailingFieldsType {
   slug: string;
   subtitle: string;
   thumbnail: ThumbnailType;
+  smallPrice: number;
 }
 
 // ImageInterface START

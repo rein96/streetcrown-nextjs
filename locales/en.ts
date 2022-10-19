@@ -30,6 +30,8 @@ const en = {
   booking_form_whatsapp:
     'You could message the booking form to our Whatsapp Number directly',
   send_whatsapp: 'Send WhatsApp',
+  // detailing page
+  start_from: 'Start from',
 };
 
 export default en;

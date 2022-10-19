@@ -36,6 +36,11 @@ p {
   filter: brightness(0.3);
 }
 
+.left-red-line {
+  width: 8px;
+  background-color: var(--red-ds);
+}
+
 // Fade In Up animation
 .animation-fadeInUp {
   animation: fadeInUp 0.5s;

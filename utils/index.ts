@@ -20,3 +20,12 @@ export const getTodayDate = (): string => {
 
   return `${yyyy}-${mm}-${dd}`; // Solved : 2022-01-21
 };
+
+/** Ex: 14940 -> output: Rp 14.940 */
+export const rupiahFormatter = (number: number) => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    maximumSignificantDigits: 10,
+  }).format(number);
+};

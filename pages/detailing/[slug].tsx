@@ -107,7 +107,7 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
   const detailingModalVisible = router.query?.modal === 'detailing';
 
   const fields: DetailingFieldsType = detailingService?.fields;
-  const { name, description, images, slug } = fields || {};
+  const { name, description, images, slug, smallPrice } = fields;
 
   const defaultDetailingService = detailingService.fields.name;
 
@@ -124,6 +124,7 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
         ogDescription={description}
         canonicalUrl={`${SITE_URL}/detailing/${slug}`}
         ogUrl={`${SITE_URL}/detailing/${slug}`}
+        // ogImage={'https:' + thumbnail.fields.file.url}
       />
       {/* Banner Image */}
       <DetailingHeader detailingName={name} />
@@ -132,6 +133,7 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
         detailingName={name}
         description={description}
         images={images}
+        smallPrice={smallPrice}
       />
 
       {/* Contact Us Banner */}

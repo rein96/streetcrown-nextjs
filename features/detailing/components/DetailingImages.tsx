@@ -14,7 +14,7 @@ const DetailingImages: React.FC<DetailingImagesProps> = (props) => {
       <div className='flex my-8'>
         <div className='left-red-line' />
         <h2 className='text-xl font-medium text-white ml-2'>
-          Our work for <span className='text-red'>{detailingName}</span>
+          <span className='text-red'>{detailingName}</span> Gallery
         </h2>
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>

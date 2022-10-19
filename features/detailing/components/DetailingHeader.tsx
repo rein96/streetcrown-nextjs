@@ -26,14 +26,6 @@ const DetailingHeader = (props: DetailingHeaderProps) => {
           </h2>
         </div>
       </div>
-
-      {/* CSS */}
-      <style jsx>{`
-        .left-red-line {
-          width: 12px;
-          background-color: var(--red-ds);
-        }
-      `}</style>
     </>
   );
 };

@@ -30,6 +30,8 @@ const id = {
   booking_form_whatsapp:
     'Kamu bisa kirim booking form langsung ke WhatsApp kami',
   send_whatsapp: 'Kirim WhatsApp',
+  // detailing page
+  start_from: 'Harga mulai dari',
 };
 
 export default id;
