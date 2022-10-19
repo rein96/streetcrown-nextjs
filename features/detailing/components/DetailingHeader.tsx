@@ -21,7 +21,7 @@ const DetailingHeader = (props: DetailingHeaderProps) => {
         />
         <div className='flex absolute bottom-10 left-10'>
           <div className='left-red-line' />
-          <h2 className='text-3xl font-medium text-white ml-2'>
+          <h2 className='text-2xl md:text-3xl font-medium text-white ml-2'>
             {props.detailingName}
           </h2>
         </div>
