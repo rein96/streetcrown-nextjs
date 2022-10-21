@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { SITE_URL } from 'constants/common';
+import { useRouter } from 'next/router';
 
 type MetaProps = {
   canonicalUrl?: string;
@@ -30,10 +31,14 @@ const Meta: React.FC<MetaProps> = ({
   ogDescription = 'StreetCrown Auto Detailing adalah Auto Detailer, Nano ceramic coating, untuk mobil dan motor di Sunter Jakarta Utara dan Bandung',
   ogUrl = SITE_URL,
   ogSiteName = 'StreetCrown',
-  ogImage = '/streetcrown-square-logo.jpg',
+  ogImage,
   children,
 }) => {
-  ogImage = ogImage != null ? ogImage : '/streetcrown-square-logo.jpg';
+  const router = useRouter();
+
+  ogImage =
+    ogImage != null ? ogImage : `${SITE_URL}/streetcrown-square-logo.jpg`;
+
   return (
     <Head>
       <meta charSet='UTF-8' />
@@ -47,6 +52,7 @@ const Meta: React.FC<MetaProps> = ({
         content='index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
         key='metarobots'
       />
+      <meta name='googlebot' content='index,follow' />
       <meta name='description' content={description} key='metadescription' />
       <meta property='og:title' content={ogTitle} key='ogtitle' />
       <meta property='og:type' content={ogType} key='ogtype' />
@@ -58,14 +64,24 @@ const Meta: React.FC<MetaProps> = ({
       />
       <meta property='og:url' content={ogUrl} key='ogurl' />
       <meta property='og:site_name' content={ogSiteName} key='ogsitename' />
-      <meta
-        property='og:image'
-        // content={`${SITE_URL}${ogImage}`}
-        content='/assets/streetcrown-square-logo.png'
-        key='ogimage'
-      />
+      <meta property='og:image' content={`${ogImage}`} key='ogimage' />
       <meta name='twitter:card' content='summary' />
       <meta name='twitter:image' content={ogImage} />
+      <meta name='theme-color' content='#262B31' />
+
+      {/* Render link hrefLang based on locales */}
+      {router.locales.map((locale) => {
+        return (
+          <link
+            key={locale}
+            rel='alternate'
+            hrefLang={locale}
+            href={`${SITE_URL}/${locale}${router.asPath}`}
+          />
+        );
+      })}
+      <link rel='alternate' hrefLang='x-default' href={SITE_URL} />
+
       {/* Source: https://favicon.io/favicon-converter/ */}
       <link
         rel='apple-touch-icon'
