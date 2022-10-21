@@ -10,13 +10,13 @@
 - Email js
 - Google Analytics
 - Static Site Generator
+- Sentry
 
 ## Features
 
 - Internationalization (i18n) (English 🇺🇸 and Indonesian 🇮🇩)
 - Strongly typed programming language using [Typescript](https://www.typescriptlang.org/) 👮‍♂️
 - Integration with [Contentful](https://www.contentful.com) - automated content model & demo setup
-- Responsive/adaptive images via [next-image](https://nextjs.org/docs/api-reference/next/image)
 - Uses utility-first [TailwindCSS](https://tailwindcss.com/) framework
 - Responsive design (desktop / mobile)
 
