@@ -15,6 +15,7 @@ const moduleExports = {
   i18n: {
     locales: ['id', 'en'],
     defaultLocale: 'id',
+    localeDetection: false,
   },
 
   sentry: {
