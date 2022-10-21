@@ -51,9 +51,9 @@ function Footer() {
 
             return (
               <div key={location} className='sub-footer-container px-6 py-6'>
-                <h4 className='footer-header-text border-b border-grey'>
+                <p className='footer-header-text border-b border-grey'>
                   {location}
-                </h4>
+                </p>
                 <a
                   href={`https://api.whatsapp.com/send?phone=${whatsappNumber}&text=Halo%20streetcrown.id!`}
                   target='_blank'
