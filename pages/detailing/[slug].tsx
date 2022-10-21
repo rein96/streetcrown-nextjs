@@ -122,8 +122,8 @@ const DetailingPage: React.FC<DetailingPageProps> = ({
         title={`${name} | StreetCrown`}
         description={description}
         ogDescription={description}
-        canonicalUrl={`${SITE_URL}/detailing/${slug}`}
-        ogUrl={`${SITE_URL}/detailing/${slug}`}
+        canonicalUrl={`${SITE_URL}/${router.locale}/detailing/${slug}`}
+        ogUrl={`${SITE_URL}/${router.locale}/detailing/${slug}`}
         ogImage={'https:' + thumbnail.fields.file.url}
       />
       {/* Banner Image */}

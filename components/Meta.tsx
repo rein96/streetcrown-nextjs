@@ -20,7 +20,6 @@ type MetaProps = {
 };
 
 const Meta: React.FC<MetaProps> = ({
-  canonicalUrl = SITE_URL,
   title = 'StreetCrown',
   keywords = 'nano coating, nano ceramic coating, interior, detailing, jakarta, sunter, bandung',
   icon = '/favicon.ico',
@@ -29,7 +28,8 @@ const Meta: React.FC<MetaProps> = ({
   ogType = 'website',
   ogLocale = 'id',
   ogDescription = 'StreetCrown Auto Detailing adalah Auto Detailer, Nano ceramic coating, untuk mobil dan motor di Sunter Jakarta Utara dan Bandung',
-  ogUrl = SITE_URL,
+  canonicalUrl,
+  ogUrl,
   ogSiteName = 'StreetCrown',
   ogImage,
   children,
@@ -38,6 +38,10 @@ const Meta: React.FC<MetaProps> = ({
 
   ogImage =
     ogImage != null ? ogImage : `${SITE_URL}/streetcrown-square-logo.jpg`;
+
+  canonicalUrl = !!canonicalUrl ? canonicalUrl : `${SITE_URL}/${router.locale}`;
+
+  ogUrl = !!ogUrl ? ogUrl : `${SITE_URL}/${router.locale}`;
 
   return (
     <Head>
