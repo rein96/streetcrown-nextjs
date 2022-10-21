@@ -32,9 +32,10 @@ const ContactUs: React.FC<ContactUsProps> = ({ detailingName }) => {
         }}
       >
         <div className='contact-banner-content flex flex-col absolute z-10 w-full text-center'>
-          <h4 className='text-xl font-medium text-white'>
-            Contact Us for <span className='text-red'>{detailingName}</span>
-          </h4>
+          <p className='text-xl font-medium text-white mx-1'>
+            Contact Us for{' '}
+            <span className='text-red tracking-normal'>{detailingName}</span>
+          </p>
           <div className='flex justify-center mt-4'>
             <Button className='py-2' onClick={handleShowModal}>
               Contact Us
