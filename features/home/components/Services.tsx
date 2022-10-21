@@ -67,7 +67,7 @@ const Services: React.FC<ServicesProps> = ({ detailingServices }) => {
                     />
                     <div className='detailing-card-content'>
                       {/* Detailing Title / Name */}
-                      <h4 className='text-xl'>{fields.name}</h4>
+                      <h4 className='text-xl font-semibold'>{fields.name}</h4>
                       {/* Subtitle */}
                       {fields?.subtitle && (
                         <p className='text-xs text-grey opacity-80 border-t pt-1 mt-1'>
