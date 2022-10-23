@@ -1,2 +1,9 @@
+# *
 User-agent: *
 Allow: /
+
+# Host
+Host: https://streetcrown.id
+
+# Sitemaps
+Sitemap: https://streetcrown.id/sitemap.xml

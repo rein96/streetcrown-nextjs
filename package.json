@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "yarn run build && yarn run start",
-    "release-major": "yarn version --major && git push --follow-tags"
+    "release-major": "yarn version --major && git push --follow-tags",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@sentry/nextjs": "^7.15.0",
@@ -16,6 +17,7 @@
     "contentful": "^9.1.5",
     "emailjs-com": "^3.2.0",
     "next": "^12.3.1",
+    "next-sitemap": "^3.1.29",
     "react": "17.0.2",
     "react-before-after-slider-component": "^1.1.5",
     "react-dom": "17.0.2",
