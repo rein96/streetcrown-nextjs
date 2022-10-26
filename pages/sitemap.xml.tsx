@@ -4,7 +4,7 @@ const toUrl = (host, route, languages) =>
   languages
     .map(
       (lang) =>
-        `<url><loc>http://www.${host}${
+        `<url><loc>https://${host}${
           lang === 'id' ? '' : `/${lang}`
         }${route}</loc></url>`
     )
