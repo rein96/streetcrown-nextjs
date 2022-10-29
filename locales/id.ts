@@ -1,4 +1,8 @@
 const id = {
+  // meta
+  metaDesc:
+    'StreetCrown auto detailing adalah auto detailer, nano ceramic coating, untuk mobil dan motor di Sunter Jakarta Utara dan Bandung',
+  // home page
   book: 'Buat Janji',
   trained_detailer: 'Detailer Terlatih',
   trainer_detailer_description:

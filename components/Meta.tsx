@@ -26,7 +26,7 @@ const Meta: React.FC<MetaProps> = ({
   description = 'StreetCrown Auto Detailing adalah Auto Detailer, Nano ceramic coating, untuk mobil dan motor di Sunter Jakarta Utara dan Bandung',
   ogTitle = 'StreetCrown',
   ogType = 'website',
-  ogLocale = 'id',
+  ogLocale,
   ogDescription = 'StreetCrown Auto Detailing adalah Auto Detailer, Nano ceramic coating, untuk mobil dan motor di Sunter Jakarta Utara dan Bandung',
   canonicalUrl,
   ogUrl,
@@ -42,6 +42,8 @@ const Meta: React.FC<MetaProps> = ({
   canonicalUrl = !!canonicalUrl ? canonicalUrl : `${SITE_URL}/${router.locale}`;
 
   ogUrl = !!ogUrl ? ogUrl : `${SITE_URL}/${router.locale}`;
+
+  ogLocale = !!ogLocale ? ogLocale : router.locale;
 
   return (
     <Head>

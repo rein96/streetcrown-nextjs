@@ -7,6 +7,7 @@ import {
   WhyChooseUs,
   Workshops,
 } from 'features/home/components';
+import { useTranslation } from 'hooks';
 import { contentfulClient } from 'lib/contentful';
 import { GetStaticProps, NextPage } from 'next';
 import dynamic from 'next/dynamic';
@@ -42,9 +43,14 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async ({
 };
 
 const HomePage: NextPage<HomePageProps> = ({ detailingServices }) => {
+  const translate = useTranslation();
+
   return (
     <Layout>
-      <Meta />
+      <Meta
+        description={translate.metaDesc}
+        ogDescription={translate.metaDesc}
+      />
       <Hero detailingServices={detailingServices} />
       <Services detailingServices={detailingServices} />
       <About />
