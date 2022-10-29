@@ -120,7 +120,7 @@ const About: React.FC = () => {
       <style jsx>{`
         .red-line {
           height: 4px;
-          width: 188px;
+          width: 200px;
           border-radius: 20px;
           margin-top: 8px;
         }

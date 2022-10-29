@@ -95,6 +95,11 @@ const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
           width: 100%;
         }
 
+        .hero-image {
+          z-index: -1;
+          opacity: 0.7;
+        }
+
         .hero-portrait {
           display: none;
           height: 92vh;
