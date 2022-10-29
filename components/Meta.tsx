@@ -71,7 +71,7 @@ const Meta: React.FC<MetaProps> = ({
       <meta property='og:image' content={`${ogImage}`} key='ogimage' />
       <meta name='twitter:card' content='summary' />
       <meta name='twitter:image' content={ogImage} />
-      <meta name='theme-color' content='#262B31' />
+      <meta name='theme-color' content='#191919' />
 
       {/* Render link hrefLang based on locales */}
       {router.locales.map((locale) => {
