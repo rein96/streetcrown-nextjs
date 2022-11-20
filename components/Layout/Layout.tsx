@@ -1,3 +1,4 @@
+import { useFlags } from 'flagsmith/react';
 import React from 'react';
 import WhatsappButton from './components/WhatsappButton';
 import Footer from './Footer';
@@ -9,13 +10,21 @@ interface LayoutProps {
 
 /** Reusable Layout component for pages */
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const flags = useFlags(['floating_whatsapp_button'])
+
+  const floatingWhatsappButtonEnabled = flags.floating_whatsapp_button.enabled
+
   return (
     <>
       <Header />
       <div className='layout-container'>{children}</div>
       <Footer />
 
-      <WhatsappButton />
+      {
+        floatingWhatsappButtonEnabled
+        &&
+        <WhatsappButton />
+      }
 
       {/* CSS */}
       <style jsx>{`

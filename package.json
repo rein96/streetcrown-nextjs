@@ -16,6 +16,7 @@
     "classnames": "^2.3.2",
     "contentful": "^9.1.5",
     "emailjs-com": "^3.2.0",
+    "flagsmith": "^3.14.1",
     "next": "^12.3.1",
     "next-sitemap": "^3.1.29",
     "react": "17.0.2",
