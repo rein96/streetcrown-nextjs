@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { withSentry } from '@sentry/nextjs';
 interface ResponseData {
   revalidated?: boolean;
   error?: string;
@@ -46,4 +45,4 @@ const handler = async (
   }
 };
 
-export default withSentry(handler);
+export default handler;
