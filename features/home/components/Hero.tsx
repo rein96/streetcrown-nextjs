@@ -60,13 +60,13 @@ const Hero: React.FC<HeroProps> = ({ detailingServices }) => {
         </section>
         <img
           alt='interior car background'
-          className='hero-image hero-portrait'
-          src='/assets/hero-portrait.jpg'
+          className='hero-image hero-portrait opacity-20'
+          src='/assets/auto_detailing_black_glove.jpg'
         />
         <img
           alt='interior car background'
-          className='hero-image hero-landscape'
-          src='/assets/hero-landscape.jpg'
+          className='hero-image hero-landscape opacity-20'
+          src='/assets/auto_detailing_black_glove.jpg'
         />
         {/* TODO: Use next/image */}
         {/* <Image
